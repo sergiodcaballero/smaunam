@@ -7,6 +7,7 @@ session_start() ?>
 <title>Impresión de Ordenes  AUTO GESTION SMAUNaM</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" href="mm_restaurant1.css" type="text/css" />
+<link href="impresion.css" rel="stylesheet" type="text/css" media="print"/>
 <style type="text/css">
 <!--
 .Estilo1 {font-size: 14px}
@@ -109,10 +110,10 @@ session_start() ?>
 	//	  $Hora = strftime("%I:%M:%S", time());
 		 $Carga_Cabecera ="insert into ordenes_medicas set  regio = 22, Matricula = 11111, MatriRP = 11111, MONTO = '".$Monto."', Documento = '".$N_Afiliado."', Afiliado = '".$Nombre ."', Coseguro = '".$Coseguro."', Fecha_emision = '".$Fecha."', docu_de = '".$Nro_Doc."' , forma_depago = 0 , Operador = 'AutoGestion', nro_practicas = 1, codigo = '".$Codigo."' , hora = '".$Hora."', plan = '".$Plan."', guardo4 = 00000, `Forma_Pago` = 'CCTE', `CUOTAS` = 1, `regional` = 'Posadas'"; 		
 		  //Libero Recursos del inser 
-		 // $Resultado=mysql_query($Carga_Cabecera);
-		 $Resultado=mysql_query($Carga_Cabecera,$link);
-		 $nro_orden =  mysqli_insert_id($link);
-		 printf ("Nuevo registro con el id %d.\n".$nro_orden );
+		  $Resultado=mysql_query($Carga_Cabecera);
+		 //$Resultado=mysql_query($Carga_Cabecera,$link);
+		// $nro_orden =  mysqli_insert_id($link);
+		// printf ("Nuevo registro con el id %d.\n".$nro_orden );
 		  
 		   //saco el proximo numero 
 		  $consulta_orden = "SELECT * FROM ordenes_medicas";
@@ -137,9 +138,9 @@ session_start() ?>
 		  mysql_close();
 		  
 	   ?><script language="JavaScript">
-		alert("Cargue 2 Hojas en su impresora y presione el botón Imprimir, EL sistema cerrará la ventana automáticamente luego de 30 segundos");
+		alert("Cargue 2 Hojas A4, en su impresora y presione el botón Imprimir, EL sistema cerrará la ventana automáticamente luego de 30 segundos");
 		</script>&nbsp;
-          <input type="button" value="Imprimir Orden " name="Imprimir " onclick="javascript:print()" />
+          <input type="button" value="Imprimir Orden " name="imprimir" id="imprimir" onclick="javascript:print()" />
   <script language="JavaScript" type="text/javascript">
 		var pagina="/autogestion/Inicio.html"
 		function redireccionar() 
@@ -149,7 +150,6 @@ session_start() ?>
 		setTimeout ("redireccionar()", 30000);
 		  </script></p>
 <form id="form1" name="form1" method="post" action="">
-  <p align="center">&nbsp;</p>
   <p align="center">&nbsp;</p>
   <table width="819" border="1">
     <tr>
@@ -268,6 +268,9 @@ session_start() ?>
   <p align="left">&nbsp;</p>
 </form>
        <form id="form2" name="form2" method="post" action="">
+         <p class="logo">&nbsp;</p>
+         <p class="logo">&nbsp;</p>
+         <p class="logo">&nbsp;</p>
          <p class="logo">&nbsp;</p>
          <p class="logo">&nbsp;</p>
 </form>

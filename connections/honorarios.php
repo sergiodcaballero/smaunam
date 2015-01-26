@@ -23,10 +23,10 @@
 # Type="MYSQL"
 # HTTP="true"
   $hostname_honorarios = 'localhost';
-//  $username_honorarios = 'afiliados';
-  //$password_honorarios = 'jujuy1745'; // NOTA: Reemplace password por el password de su cuenta de hosting
-  $username_honorarios = 'root';
-  $password_honorarios = 'root';
+  $username_honorarios = 'afiliados';
+  $password_honorarios = 'jujuy1745'; // NOTA: Reemplace password por el password de su cuenta de hosting
+ // $username_honorarios = 'root';
+ // $password_honorarios = 'root';
   $honorarios = mysql_connect($hostname_honorarios, $username_honorarios, $password_honorarios) or die ('Ocurrió un error al conectarse al servidor mysql');
   $database_honorarios = 'autogestion';
    mysql_select_db($database_honorarios);

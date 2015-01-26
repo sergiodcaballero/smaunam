@@ -50,7 +50,7 @@ $consulta = "SELECT ordenes_medicas.Numero, ordenes_medicas.Documento, ordenes_m
 FROM ordenes_medicas, detalle_orden_medica, nomenclador
 WHERE ordenes_medicas.Numero = detalle_orden_medica.orden_nro
 and detalle_orden_medica.codigo = nomenclador.codigo  
-AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision BETWEEN  '".$fecha_desde."' and '".$Fecha."'";
+AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision BETWEEN  '".$fecha_desde."' and '".$Fecha."' and  Forma_Pago <> 'ANUL'";
 $resultado = mysql_query($consulta);
 $Cantidad_Filas = mysql_num_rows($resultado);
 echo "<br /> Cantidad de Filas Encontradas :$Cantidad_Filas <br />\n";
