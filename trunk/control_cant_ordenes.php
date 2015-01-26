@@ -6,6 +6,8 @@ session_start() ?>
 
 //Establecimiento de la conexi&oacute;n 
 require_once('connections/honorarios.php'); 
+mysql_select_db($database_honorarios, $honorarios);
+  
 //Preparaci&oacute;n y ejecuci&oacute;n de la consulta
 $N_Afiliado = $_POST['N_Afiliado'];
 $Afiliado_Solo = substr($N_Afiliado, 0, -2); //Saco el Nº de Afilaido del Titular
@@ -21,7 +23,7 @@ $mes = date("m");
 $ano = date("Y");
 $fecha1= mktime(0, 0, 0, $mes, $dia, $ano);
 $fecha_desde = date("Y-m-d", $fecha1);
-$consulta_fecha = "SELECT numero FROM ordenes_medicas WHERE Documento = ".$N_Afiliado." and  Fecha_emision BETWEEN  '".$fecha_desde."' and '".$Fecha."'";
+$consulta_fecha = "SELECT numero FROM ordenes_medicas WHERE Documento = ".$N_Afiliado." and  Fecha_emision BETWEEN  '".$fecha_desde."' and '".$Fecha."'  and  Forma_Pago <> 'ANUL'";
 $resultado1 = mysql_query($consulta_fecha) or die(mysql_error());
 $Cantidad_Filas = mysql_num_rows($resultado1);
 echo "<br /> Cantidad de Filas Encontradas :$Cantidad_Filas <br />\n";
@@ -49,7 +51,7 @@ else:
 	$ano = date("Y");
 	$fecha1= mktime(0, 0, 0, $mes, $dia, $ano);
 	$fecha_desde = date("Y-m-d", $fecha1); 
-	$consulta_fecha = "SELECT numero FROM ordenes_medicas WHERE Documento = ".$N_Afiliado." and  Fecha_emision BETWEEN  '".	$fecha_desde."' and '".$Fecha."'";
+	$consulta_fecha = "SELECT numero FROM ordenes_medicas WHERE Documento = ".$N_Afiliado." and  Fecha_emision BETWEEN  '".	$fecha_desde."' and '".$Fecha."' and  Forma_Pago <> 'ANUL' ";
 	 $resultado2 = mysql_query($consulta_fecha) or die(mysql_error());
 	 $Cantidad_Filas2 = mysql_num_rows($resultado2);
 	 echo "<br /> En el año extrajo $Cantidad_Filas , para este afiliado <br />\n";

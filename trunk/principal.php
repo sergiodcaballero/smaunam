@@ -206,9 +206,9 @@ if ($n_benef === '00') {
       <input type="submit" name="Volver_atras" id="Volver_atras" value="Volver al Inicio" onClick="location='/autogestion/Inicio.html' ">
     </form>
       <form action="" method="post" name="form4" class="Blanco">
-        Ante 
-      cualquier duda o consulta sobre el funcionamiento del sistema por favor enviar un email a 
-      <span class="blancoresaltado">autogestion@smaunam.com.ar </span>
+        <p>Recuerde configurar su impresora para imprimir en Hojas A4</p>
+        <p>Ante 
+          cualquier duda o consulta sobre el funcionamiento del sistema por favor enviar un email a <span class="blancoresaltado">autogestion@smaunam.com.ar </span></p>
       </form>
     <p>&nbsp;</p></td>
   </tr>
