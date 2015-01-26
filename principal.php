@@ -10,6 +10,14 @@ if ($n_benef === '00') {
 <html>
 <head><title>Auto Gesti&oacute;n </title>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<script type="text/javascript">
+	function confirmacion_impresion(form){
+		if (confirm("¿Esta seguro de imprimir la orden? "))
+			{
+			 form.submit();
+			}
+		}
+</script>
 <style type="text/css">
 <!--
 @import url("mm_restaurant1.css");
@@ -56,7 +64,7 @@ if ($n_benef === '00') {
           <input type="hidden" name="Nro_Doc" value="<?php echo $Nro_Doc?>">
           <input type="hidden" name="Nombre" value="<?php echo $Nombre?>">
           <input type="hidden" name="Plan" value="<?php echo $Plan?>">
-          <input type="submit" name="Imprimir_orden2" value="Imprimir Orden de Consulta">
+          <input type="button" name="Imprimir_orden2" value="Imprimir Orden de Consulta" onClick="confirmacion_impresion(document.forms[0]);">
         </div>
     </form></td>
       </tr>
