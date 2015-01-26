@@ -1,0 +1,15 @@
+
+/* CSS Document */
+
+@page {
+  size: A4; 
+}
+
+#imprimir{
+	visibility:hidden; 
+   display: none; 
+	}
+#volver_atras{
+		visibility:hidden; 
+   display: none; 
+	}
