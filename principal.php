@@ -90,7 +90,7 @@ if ($n_benef === '00') {
     <td>
     <form name="form5" method="post" action="consultar_autorizacion_afiliado.php">
       <div align="center">
-      <input type="submit" name="button" id="button" value="Imprimir Personal">
+      <input type="submit" name="button" id="button" value="Formulario Personal">
     </div>
     </form>
     </td>
@@ -98,7 +98,7 @@ if ($n_benef === '00') {
   <tr>
     <td>
     <form name="form6" method="post" action="autorizacion_afiliado_grupo_flia.php"><div align="center">
-      <input type="submit" name="afiliado_transito" id="afiliado_transito" value="Imprimir Grupo Familar"
+      <input type="submit" name="afiliado_transito" id="afiliado_transito" value="Formulario Grupo Familar"
         <?php if($puede=='X'){echo 'enabled';} else{ echo 'disabled'; }?>>
         
     </div>
