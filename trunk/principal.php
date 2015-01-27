@@ -1,5 +1,6 @@
 <?php session_start();
 $n_benef = $_SESSION['n_benef'];
+$puede = "";
 if ($n_benef === '00') {
 			$puede = 'X';
 			//print_r($puede);
