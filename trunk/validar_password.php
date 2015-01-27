@@ -15,7 +15,7 @@
   $Pass  = $_POST['pass_actual'];
   $Pass_new = $_POST['pass_new'];
   $Pass_rep = $_POST['pass_rep'];
-  $consulta = "SELECT N_Afiliado, Nombre, Domicilio, Plan_ , Parentesco FROM ppadron where N_afiliado =".$N_Afiliado." and 	   Num_Doc =".$Nro_Doc." and pass=".$Pass;
+  $consulta = "SELECT N_Afiliado, Nombre, Domicilio, Plan_ , Parentesco FROM ppadron where N_afiliado =".$N_Afiliado." and 	   Num_Doc =".$Nro_Doc." and pass='".$Pass."'";
 	$resultado = mysql_query($consulta, $honorarios) or die(mysql_error());
 	 $Cantidad_Filas = mysql_num_rows($resultado);
   if ($Cantidad_Filas < 1){  
@@ -37,22 +37,22 @@
 	$blanco = strlen($Pass_new) * strlen($Pass_rep);
 	if ($blanco > 0 ) {
 		if ($Pass_new === $Pass_rep)  {
-			$cambio = "update ppadron set  pass = ".$Pass_new." ,  nuevo = 'NO' where Afili =".$Nro_Doc;
-			$cargo = mysql_query($cambio, $honorarios) or die(mysql_error());
+			$cambio = "update ppadron set  pass = '".$Pass_new."' ,  nuevo = 'NO' where Afili =".$Nro_Doc;
+			$cargo = mysql_query($cambio) or die(mysql_error());
 			$auditoria = "insert into auditoria (N_Afiliado, accion, fecha) values ('".$N_Afiliado."','MODIFICO PASSWORD','".$fecha."')";
 			
-			$cargo_audit = mysql_query($auditoria , $honorarios) or die(mysql_error());
+			$cargo_audit = mysql_query($auditoria) or die(mysql_error());
 			?>
 						<script language="JavaScript">
 						alert("A Modificado Su contraseña Con Exito");
 						</script>
 						 <script language="JavaScript" type="text/javascript">
-							var pagina="/autogestion/Inicio.html"
+							var pagina="/autogestion/cerrar_sesion.php"
 							function redireccionar() 
 							{
 							location.href=pagina
 							} 
-							setTimeout ("redireccionar()", 1000);
+							setTimeout ("redireccionar()", 0);
 							  </script> <?php	
 		} else {
 			?>

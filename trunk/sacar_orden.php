@@ -31,7 +31,7 @@ session_start() ?>
 		 //Establecimiento de la conexi&oacute;n 
    		require_once('connections/honorarios.php'); 
    		//Preparaci&oacute;n y ejecuci&oacute;n de la consulta
-	  $N_Afiliado = $_SESSION['N_Afiliado'];
+	  $N_Afiliado = $_SESSION['N_Afiliado']; 
 	  $Afiliado_Solo = substr($N_Afiliado, 0, -2); //Saco el Nº de Afilaido del Titular
 	  $Nro_Doc    = $_SESSION['Nro_Doc'];
 	  $Nombre     = $_SESSION['Nombre']; 
@@ -138,11 +138,11 @@ session_start() ?>
 		  mysql_close();
 		  
 	   ?><script language="JavaScript">
-		alert("Cargue 2 Hojas A4, en su impresora y presione el botón Imprimir, EL sistema cerrará la ventana automáticamente luego de 30 segundos");
+		alert("Cargue 2 Hojas A4, en su impresora y presione el botón Imprimir, EL sistema cerrará la ventana de impresión automáticamente luego de 30 segundos");
 		</script>&nbsp;
           <input type="button" value="Imprimir Orden " name="imprimir" id="imprimir" onclick="javascript:print()" />
   <script language="JavaScript" type="text/javascript">
-		var pagina="/autogestion/Inicio.html"
+		var pagina="/autogestion/index.php"
 		function redireccionar() 
 		{
 		location.href=pagina
@@ -150,6 +150,7 @@ session_start() ?>
 		setTimeout ("redireccionar()", 30000);
 		  </script></p>
 <form id="form1" name="form1" method="post" action="">
+  <p align="center">&nbsp;</p>
   <p align="center">&nbsp;</p>
   <table width="819" border="1">
     <tr>
@@ -268,9 +269,6 @@ session_start() ?>
   <p align="left">&nbsp;</p>
 </form>
        <form id="form2" name="form2" method="post" action="">
-         <p class="logo">&nbsp;</p>
-         <p class="logo">&nbsp;</p>
-         <p class="logo">&nbsp;</p>
          <p class="logo">&nbsp;</p>
          <p class="logo">&nbsp;</p>
 </form>

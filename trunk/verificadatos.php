@@ -20,7 +20,7 @@ session_start() ?>
 						alert("Carga de Datos Erroneos Verifique");
 						</script>
 						 <script language="JavaScript" type="text/javascript">
-							var pagina="/autogestion/Inicio.html"
+							var pagina="/autogestion/index.php"
 							function redireccionar() 
 							{
 							location.href=pagina
@@ -51,7 +51,7 @@ session_start() ?>
 							alert("La Contraseña es Incorrecta");
 							</script>
 							 <script language="JavaScript" type="text/javascript">
-								var pagina="/autogestion/Inicio.html"
+								var pagina="/autogestion/index.php"
 								function redireccionar() 
 								{
 								location.href=pagina
@@ -74,7 +74,7 @@ session_start() ?>
 							alert("El Afiliado TITULAR debe realizar el primer ingreso");
 							</script>
 							 <script language="JavaScript" type="text/javascript">
-								var pagina="/autogestion/Inicio.html"
+								var pagina="/autogestion/index.php"
 								function redireccionar() 
 								{
 								location.href=pagina
@@ -97,7 +97,7 @@ session_start() ?>
 							alert("La Contraseña No puede están en Blanco");
 							</script>
 							 <script language="JavaScript" type="text/javascript">
-								var pagina="/autogestion/Inicio.html"
+								var pagina="/autogestion/index.php"
 								function redireccionar() 
 								{
 								location.href=pagina
@@ -111,7 +111,7 @@ session_start() ?>
 							alert("No puede utilizar el Sistema de Auto Gestión, Por Favor comuniquese  a autogestion@smaunam.com.ar ");
 							</script>
 							 <script language="JavaScript" type="text/javascript">
-								var pagina="/autogestion/Inicio.html"
+								var pagina="/autogestion/index.php"
 								function redireccionar() 
 								{
 								location.href=pagina
