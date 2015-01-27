@@ -21,6 +21,7 @@ alert("Configure su Impresora y cargue hojas en la misma y después seleccione Im
 <body>
  <?php 
   require_once('connections/honorarios.php'); 
+  date_default_timezone_set('America/Argentina/Buenos_Aires'); 
    $Fecha = date("Y-m-d");
  $hora = date("H:i:s");
   $fech = $_GET['fecha'];

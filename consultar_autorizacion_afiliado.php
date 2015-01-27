@@ -51,8 +51,8 @@ location.href= 'consultar_autorizacion_afiliado.php';
 			alert('Ingrese la fecha');
 		}else if(form.provincia.value==0){
 			alert('Seleccione la Provincia');
-		//}else if(form.localidad.value==0){
-			//alert('Seleccione la ciudad');
+		}else if(form.localidad.value==0){
+			alert('Seleccione la ciudad');
 		}else{
 			if (confirm("¿Esta seguro de imprimir la autorización? "))
 			{

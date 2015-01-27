@@ -39,8 +39,8 @@
 			alert('Ingrese la fecha');
 		}else if(form.provincia.value==0){
 			alert('Seleccione la Provincia');
-		//}else if(form.localidad.value==0){
-			//alert('Seleccione la ciudad');
+		}else if(form.localidad.value==0){
+			alert('Seleccione la ciudad');
 		}else{
 			if (confirm("¿Esta seguro de imprimir la autorización? "))
 			{
@@ -147,7 +147,7 @@
 ?>
           </tr>
         </table>
-      <form name="form1" id= "form1" method="post" action="impresion_grupo_familiar_transito.php">
+      <form name="form1" id= "form1" method="get" action="impresion_grupo_familiar_transito.php">
         <p>&nbsp;</p>
         <h2>Autorizaci&oacute;n en transito para el Grupo Familiar</h2>
         <br>

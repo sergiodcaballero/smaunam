@@ -18,6 +18,7 @@ alert("Configure su Impresora y cargue hojas en la misma y después seleccione Im
  <?php 
  
   require_once('connections/honorarios.php'); 
+  date_default_timezone_set('America/Argentina/Buenos_Aires'); 
       $Fecha = date("Y-m-d");
  $hora = date("H:i:s");
   $fech = $_GET['fecha'];
@@ -62,8 +63,8 @@ alert("Configure su Impresora y cargue hojas en la misma y después seleccione Im
   <FONT SIZE=2.5>
   <?php 
  require_once('connections/honorarios.php'); 
-  if (isset($_POST['ciudad'])){
-	  $sql = "select * from cosun where id=".$_POST['ciudad'];
+  if (isset($_GET['ciudad'])){
+	  $sql = "select * from cosun where id=".$_GET['ciudad'];
 	  $res = mysql_query($sql, $honorarios) or die(mysql_error());
 	   while ($lugar = mysql_fetch_array($res)){
 		echo $lugar['os'];
@@ -154,9 +155,9 @@ alert("Configure su Impresora y cargue hojas en la misma y después seleccione Im
   <p>Las prestaciones que no sean contempladas como urgencia ser&aacute;n a exclusivo cargo del afiliado sin derecho a reintegro alguno.
   <br />No se cubren accidentes de transito conforme a la legislaci&oacute;n correspondiente.
   <br />No se cubre accidentes debenidos de pr&aacute;cticas deportivas.</p>
-  <p>Valido Desde: <?php echo $_POST['fecha'];?>
+  <p>Valido Desde: <?php echo $_GET['fecha'];?>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>
-  Hasta: <?php echo $_POST['fecha_limite'];?></strong></p>
+  Hasta: <?php echo $_GET['fecha_limite'];?></strong></p>
   <p><strong>Nota: El servicio notificar&aacute; a la obra social receptora toda novedad en cuanto a la modificaci&oacute;n de la vigencia del presente.</strong></p>
   <table width="689" height="100" border="0">
     <tr>
