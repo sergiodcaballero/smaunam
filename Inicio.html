@@ -7,6 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" href="mm_restaurant1.css" type="text/css" />
 <script type="text/JavaScript">
+var pagina="/autogestion/index.php"
+								function redireccionar() 
+								{
+								location.href=pagina
+								} 
+								setTimeout ("redireccionar()", 50);
 <!--
 function MM_findObj(n, d) { //v4.01
   var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
@@ -32,6 +38,7 @@ function MM_validateForm() { //v4.0
   document.MM_returnValue = (errors == '');
 }
 //-->
+
 </script>
 </head>
 <body bgcolor="#0066cc">
@@ -82,7 +89,7 @@ function MM_validateForm() { //v4.0
           </table>
         </div>
         <p align="center">
-        <label></label></p>
+        <label></label></p><?php echo 'hola';?>
         <table width="679" border="1">
           <tr>
             <td class="letra">* <strong>Se&ntilde;or Afiliado: </strong>Para poder ingresar al sistema de auto Gesti&oacute;n deber&aacute; ingresar los datos de N&ordm; de afiliado y DNI de la persona a utilizar el sistema.  </td>

@@ -1,11 +1,46 @@
 <?php session_start();
-$n_benef = $_SESSION['n_benef'];
-$puede = "";
-if ($n_benef === '00') {
+require_once('connections/honorarios.php'); 
+
+
+		  mysql_select_db($database_honorarios, $honorarios);
+  
+  //Preparaci&oacute;n y ejecuci&oacute;n de la consulta
+  //session_start();
+  $N_Afiliado = $_SESSION['N_Afiliado'];
+  //echo "El afiliado es ".$N_Afiliado;
+  $Nro_Doc    =$_SESSION['Nro_Doc'];
+  $n_benef = $_SESSION['n_benef'];
+ // echo $_SESSION['n_benef']; 
+  $consulta = "SELECT N_Afiliado, Nombre, Domicilio, Plan_ , Parentesco, n_benef FROM ppadron where N_afiliado =".$N_Afiliado." and  Num_Doc =".$Nro_Doc;//beneficiario
+ $resultado = mysql_query($consulta, $honorarios) or die(mysql_error());
+ $Cantidad_Filas = mysql_num_rows($resultado);
+//  echo "<br /> Cantidad de Filas Encontradas :$Cantidad_Filas <br />\n";
+  if ($Cantidad_Filas < 1):  
+  	//echo "<br /> No se econtr&oacute; el Afiliado<br />\n";
+  else: 	 
+	  //Recorrido del cursor de fila en fila
+	  while ($fila = mysql_fetch_array($resultado)){
+		 //Proceso de cada una de las filas
+		
+		 $Nombre =  $fila['Nombre']; 
+		 $Plan = $fila['Plan_']; 
+		 $benef = $fila['n_benef'];                                              
+		 }
+		 $puede = '';
+		 if ($n_benef === '00') {
 			$puede = 'X';
 			//print_r($puede);
 			
 		 } 
+		 
+		 
+  endif;
+  // Liberamos los recursos de las consultas	
+  
+  
+  // Se cierra la conexion
+ 
+  
  ?> 
 <!--Cap11/cursor.php-->
 <html>
@@ -152,7 +187,7 @@ if ($n_benef === '00') {
 			 <?php
 	
   //Establecimiento de la conexi&oacute;n 
-  require_once('connections/honorarios.php'); 
+  
   mysql_select_db($database_honorarios, $honorarios);
   
   //Preparaci&oacute;n y ejecuci&oacute;n de la consulta
@@ -203,6 +238,10 @@ if ($n_benef === '00') {
 ?>
           </tr>
         </table>
+        <br/>
+        <form name="form3" method="post" action="cerrar_sesion.php">
+        <input name="cerrar_sesión" type="submit" id="cerrar_sesion" value="Cerrar Sesi&oacute;n" style='width:130px; height:40px;font-size:12px;'>
+        </form>
       </div>
     </th>
   </tr>
@@ -211,8 +250,7 @@ if ($n_benef === '00') {
   </tr>
    
     <tr>
-    <td height="46" colspan="5" bgcolor="#0000FF"><form name="form3" method="post" action="Inicio.html">
-      <input type="submit" name="Volver_atras" id="Volver_atras" value="Volver al Inicio" onClick="location='/autogestion/Inicio.html' ">
+    <td height="46" colspan="5" bgcolor="#0000FF"><form name="form3" method="post" action="index.php">
     </form>
       <form action="" method="post" name="form4" class="Blanco">
         <p>Recuerde configurar su impresora para imprimir en Hojas A4</p>
