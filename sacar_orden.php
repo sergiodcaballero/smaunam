@@ -112,9 +112,10 @@ session_start() ?>
 		  //Libero Recursos del inser 
 		  $Resultado=mysql_query($Carga_Cabecera);
 		 //$Resultado=mysql_query($Carga_Cabecera,$link);
-		// $nro_orden =  mysqli_insert_id($link);
-		// printf ("Nuevo registro con el id %d.\n".$nro_orden );
+		  $Ultimo_numero  =  mysql_insert_id();
 		  
+		// printf ("Nuevo registro con el id %d.\n".$nro_orden );
+		//   echo $nro_orden; 
 		   //saco el proximo numero 
 		  $consulta_orden = "SELECT * FROM ordenes_medicas";
 		  $resultado_orden = mysql_query($consulta_orden);
@@ -123,8 +124,8 @@ session_start() ?>
 					 $Ultimo_numero = $fila['NUMERO']; 
 					                                            
 				 } 
-		 $Ultimo_numero =  $Cantidad_Filas_orden;		
-		  mysql_free_result($resultado_orden); 	  
+		// $Ultimo_numero =  $Cantidad_Filas_orden;		
+		//  mysql_free_result($resultado_orden); 	  
 			
 		  // Se cierra la conexion
 		  /// Cargo Detalle 
