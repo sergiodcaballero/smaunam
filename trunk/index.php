@@ -83,7 +83,8 @@ function MM_validateForm() { //v4.0
                 <input name="submit" type="submit" onclick="MM_validateForm('N_Afiliado','','RisNum','Nro_Doc','','RisNum');return document.MM_returnValue" value="Ingresar" />
                 
               </label></td>
-              <td align="center" bordercolor="1"><input name="button" type="button" onclick="window.close();" value="Salir" /></td>
+              <td align="center" bordercolor="1"><a href="http://www.smaunam.com.ar" style="margin-left:2%;">
+	  <input type="button" value="Volver" name="submit" /></a></td>
             </tr>
           </table>
         </div>
