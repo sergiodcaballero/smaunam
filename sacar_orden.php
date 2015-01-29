@@ -272,6 +272,7 @@ session_start() ?>
        <form id="form2" name="form2" method="post" action="">
          <p class="logo">&nbsp;</p>
          <p class="logo">&nbsp;</p>
+         <p class="logo">&nbsp;</p>
 </form>
 <p align="center" class="subHeader">&nbsp;</p>
 <table width="819" border="1">
