@@ -61,12 +61,21 @@ location.href= 'consultar_autorizacion_afiliado.php';
 			
 		}
 	}
+	function omitirAcentos(text) {
+    var acentos = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛדאבהגטיכךלםןמעףצפשתüûÑסÇח";
+    var original = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc";
+    for (var i=0; i<acentos.length; i++) {
+        text = text.replace(acentos.charAt(i), original.charAt(i));
+    }
+    return text;
+}
 	$(document).ready(function(){
 			$("#provincia").change(function() {
 				var provincia = $(this).val();
+				provincia = omitirAcentos(provincia);
 				if (provincia!=0){
 					$.post("cosun.php",{idProvincia: provincia}, function(datos) {
-			        	$("#localidad").html(datos);					 
+						$("#localidad").html(datos);					 
 					});
 					
 				}else{
