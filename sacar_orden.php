@@ -21,6 +21,18 @@ session_start() ?>
         display: none;
     }
 }
+@media all {
+   div.saltopagina{
+      display: none;
+   }
+}
+   
+@media print{
+   div.saltopagina{ 
+      display:block; 
+      page-break-before:always;
+   }
+}
 </style>
 </head>
 
@@ -141,7 +153,8 @@ session_start() ?>
 	   ?><script language="JavaScript">
 		alert("Cargue 2 Hojas A4, en su impresora y presione el botón Imprimir, EL sistema cerrará la ventana de impresión automáticamente luego de 30 segundos");
 		</script>&nbsp;
-          <input type="button" value="Imprimir Orden " name="imprimir" id="imprimir" onclick="javascript:print()" />
+        
+          <input type="button" value="Imprimir Orden " name="imprimir" id="imprimir" onclick="javascript:print()"  style = "width: 100 px; height: 50px  "/> 
   <script language="JavaScript" type="text/javascript">
 		var pagina="/autogestion/index.php"
 		function redireccionar() 
@@ -150,16 +163,13 @@ session_start() ?>
 		} 
 		setTimeout ("redireccionar()", 30000);
 		  </script></p>
-<form id="form1" name="form1" method="post" action="">
-  <p align="center">&nbsp;</p>
-  <p align="center">&nbsp;</p>
-  <table width="819" border="1">
-    <tr>
+<table width="819" border="1">
+  <tr>
       <td width="349"><span class="logo"><img src="Logo.gif" alt="1" width="328" height="78" align="left" /></span></td>
       <td width="454"><p align="center"><strong>Expendio de Ordenes WEB</strong></p>
       <p align="center" class="pageName"><strong>AUTO GESTI&Oacute;N S.M.A.U.Na.M</strong></p></td>
-    </tr>
-  </table>
+  </tr>
+</table>
   <div align="left">
     <table width="663" border="0">
              
@@ -259,21 +269,9 @@ session_start() ?>
     </div>
    
   </div>
-  <p align="left">&nbsp;</p>
-  <p align="left">&nbsp;</p>
-  <p align="left">&nbsp;</p>
-  <p align="left">&nbsp;</p>
-  <p align="left">&nbsp;</p>
-  <p align="left">&nbsp;</p>
-  <p align="left">&nbsp;</p>
-  <p align="left">&nbsp;</p>
-  <p align="left">&nbsp;</p>
-</form>
-       <form id="form2" name="form2" method="post" action="">
-         <p class="logo">&nbsp;</p>
-         <p class="logo">&nbsp;</p>
-         <p class="logo">&nbsp;</p>
-</form>
+ 
+ <div class='saltopagina'></div>
+
 <p align="center" class="subHeader">&nbsp;</p>
 <table width="819" border="1">
   <tr>
