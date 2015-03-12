@@ -125,8 +125,8 @@ session_start() ?>
 		  $Resultado=mysql_query($Carga_Cabecera);
 		 //$Resultado=mysql_query($Carga_Cabecera,$link);
 		  $Ultimo_numero  =  mysql_insert_id();
-		  
-		// printf ("Nuevo registro con el id %d.\n".$nro_orden );
+		 // echo($Ultimo_numero);
+		 // printf ("Nuevo registro con el id %d.\n".$nro_orden );
 		//   echo $nro_orden; 
 		   //saco el proximo numero 
 		 // $consulta_orden = "SELECT * FROM ordenes_medicas";

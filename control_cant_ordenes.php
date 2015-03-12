@@ -27,7 +27,7 @@ $consulta_fecha = "SELECT numero FROM ordenes_medicas WHERE Documento = ".$N_Afi
 $resultado1 = mysql_query($consulta_fecha) or die(mysql_error());
 $Cantidad_Filas = mysql_num_rows($resultado1);
 echo "<br /> Cantidad de Filas Encontradas :$Cantidad_Filas <br />\n";
-if ($Cantidad_Filas >= 4): 
+if ($Cantidad_Filas >= 3): 
 	
 	?>
 			<script language="JavaScript">
