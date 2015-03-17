@@ -129,13 +129,20 @@ session_start() ?>
 		 // printf ("Nuevo registro con el id %d.\n".$nro_orden );
 		//   echo $nro_orden; 
 		   //saco el proximo numero 
+
+
 		 // $consulta_orden = "SELECT * FROM ordenes_medicas";
 		 // $resultado_orden = mysql_query($consulta_orden);
 		  //$Cantidad_Filas_orden = mysql_num_rows($resultado_orden);
 		  //while ($fila = mysql_fetch_array($resultado_orden)){
 			//		 $Ultimo_numero = $fila['NUMERO']; 
+
 					                                            
-			//	 } 
+
+				// } 
+
+				
+
 		// $Ultimo_numero =  $Cantidad_Filas_orden;		
 		//  mysql_free_result($resultado_orden); 	  
 			
