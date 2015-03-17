@@ -22,7 +22,7 @@ if ($Cantidad_Filas < 1){
 			'smtp'			=>	'mail.smaunam.com.ar',		//direccion del smtp
 			'puerto'		=>	587,						//puerto smtp
 			'nombre'		=>	'Autogestion S.M.A.U.Na.M. ',			//nombre que aparecera en los correos
-			'cuenta'		=>	'irinam@smaunam.com.ar',	//cuenta que vamos a usar (colocar con @)
+			'cuenta'		=>	'autogestion@smaunam.com.ar',	//cuenta que vamos a usar (colocar con @)
 			'usuario'		=>	'irinam@smaunam.com.ar',	//usuario de smtp
 			'contrasena'	=>	'Irinamjujuy1745'	//contrasena de smtp
 		);
