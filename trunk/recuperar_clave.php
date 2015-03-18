@@ -42,7 +42,9 @@ if ($Cantidad_Filas < 1){
 			->setFrom(array($objCuentaUtilizada['cuenta'] => $objCuentaUtilizada['nombre']))	//quien esta enviando el mensaje?
 			//->setTo(array('computos@smaunam.com.ar' => 'pruebasma'))								//a quien le enviamos el mensaje?
 			->setTo(array('iris.sole.18@gmail.com' => 'autogestion smaunam'))
-			->setBody('<p>Sr. Afilado/a:</p><p>Por la presente le informamos que ha solicitado la recuperación de clave en el sistema de Autogestión S.M.A.U.Na.M.</p><p>Su clave de acceso es: '.$pass.'</p></br>')					//cuerpo del mensaje	
+			->setBody('<p>Sr. Afilado/a:<br>Por la presente le informamos que ha solicitado la recuperación de clave en el sistema de Autogestión S.M.A.U.Na.M.<br>Su clave de acceso es: '.$pass.'</p><p>Trabajamos para mejorar los servicios a los afiliados<br>
+			Saludos<br>
+			S.M.A.U.Na.M.</p>')					//cuerpo del mensaje	
 			->setContentType('text/html')														//mensaje en formato HTML
 		;
 		
