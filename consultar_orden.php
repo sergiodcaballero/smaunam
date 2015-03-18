@@ -1,214 +1,149 @@
 <?php 
 ob_start();
-session_start(); ?> 
-<html>
+session_start();
+if (!(isset($_SESSION['n_benef']))){
+		header('Location:index.php');
+	}
+ ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+
+<!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+<meta http-equiv="Content-Type" content=" charset=iso-8859-1;width=device-width, initial-scale=1.0, user-scalable=no" />
+
+<title>Auto Gesti&oacute;n  - P&aacute;gina principal</title>
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+<link href="estilos/mis_estilos.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css" />
-<link rel="stylesheet" type="text/css" href="bootstrap/css/jquery.dialog2.css"/>
- <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="ScriptLibrary/jquery-latest.pack.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootbox.js"></script>
-<head>
-<title>Auto Gesti&oacute;n</title>
-<style type="text/css">
-<!--
-@import url("mm_restaurant1.css");
--->
-</style>
-<style type="text/css">
-body{
-font-weight:normal;
-}
-</style>
-<script type="text/javascript">
- 
-$(document).ready(function(e){
-			 $(".anular").click(function(evento){
-				 var num_orden = $(this).attr('id');
-				//  bootbox.alert("Hello world!", function() {
-              //  console.log("Alert Callback");
-            //});
-			bootbox.confirm(
-			"¿Esta seguro de anular la orden Nº "+num_orden+"?", 			
-			function(result) {
-				//var box=bootbox.dialog({
-					//	message: '</br> Se está enviando su petición de Anulación</br></br></br>'+
-					//	'<div class="progress progress-striped active">'+ 
-					//				'<div class="bar" style="width: 100%;"> ' +
-					//				'</div></br>',
-					//	closeButton: false,	
-         //  });
-				if (result==true){
-					
-		  //box.modal('show');
-					var url ="anulacion.php"; 
-					$.post(url,{orden:num_orden},function(valor,suceso){
-						//alert(valor);
-						if (suceso=='success'){
-							//box.modal('hide');
-								alert('La orden ha sido eliminada exitosamente');	
-								
-							}else{
-								//box.modal('hide');
-								alert('Intente más tarde');
-						}
-						 location.reload();
-					
-					});
-					
-					
-					}
-			}); 
-				// alert (num_orden);
-			//	 if (confirm("¿Esta seguro de anular la orden? Una vez que se anule la orden no se la puede utilizar."))
-		//	{
-			//	var url ="anulacion.php";
-				//$.post(url,{orden:num_orden},function(valor){
-					//alert(valor);
-					//});
-		//}
-				// alert('holaaaaaaaaaaaaaaaaaaaaaaaa');
-				// alert($(this).attr('id'));
-				});
-				});
-	
-	
-	
+<script type="text/javascript" src="bootstrap/js/jquery.md5.min.js"></script>
+<script type="text/JavaScript">
+
+//-->
 </script>
+<style type="text/css">
+	.form-horizontal .control-label{
+		width:300px;}
+	
+</style>
 </head>
 <body>
- 
-<table width="933" height="461" border="1">
-<tr>
-<th width="911" bgcolor="#99ccff"><div align="left"><font color='blue'><span class="logo"><img src="Image3.gif" alt="Logo" width="351" height="90" border="1" />AUTO GESTI&Oacute;N S.M.A.U.Na.M<br />
-</span></font></div></th>
-</tr>
-<tr>
-<td height="169"><div align="center">
-
-<br/>
-<h4>
- Consumo de Ordenes de Consulta por Auto Gesti&oacute;n
-<br/>
-</h4>
-<br/><br/>
-<table width="94%" class='table table-striped' style="width:92%;">
-<thead>
-<tr>
-<th width="9%" ><center>Nº Orden </center></th>
-<th width="9%" ><center>Nº Afiliado</center></th>
-<th width="9%" ><center>Nombre</center></th>
-<th width="15%"><center>Fecha de Emisión</center></th>
-<th width="7%" ><center>Hora</center></th>
-<th width="9%"><center>C&oacute;digo</center></th>
-<th width="13%" ><center>Descripci&oacute;n</center></th>
-<th width="11%" ><center>Coseguro</center></th>
-<th width="18%" ></th>
-</tr></thead><tbody>
-<?php
- //Establecimiento de la conexi&oacute;n 
-require_once('connections/honorarios.php'); 
-$N_Afiliado = $_SESSION['N_Afiliado'];
-//echo "Nro de Afiliado".$N_Afiliado;
-// Controlo que No haya sacado más de 2 ordenes en el mes.- 
-$Fecha = date("Y-m-d");
-$dia = 1;
-$mes = 1;
-$ano = date("Y");
-$fecha1= mktime(0, 0, 0, $mes, $dia, $ano);
-$fecha_desde = date("Y-m-d", $fecha1);
-
-$consulta = "SELECT ordenes_medicas.Numero, ordenes_medicas.Documento, ordenes_medicas.Afiliado, ordenes_medicas.Fecha_emision, ordenes_medicas.hora, detalle_orden_medica.codigo, nomenclador.descripcion, ordenes_medicas.coseguro
-FROM ordenes_medicas, detalle_orden_medica, nomenclador
+<div class="container">
+	<div class="contenido">
+    
+  <div class="row-fluid">
+    <div class="span12">
+		<div class="encabezado">
+        	<div class="row-fluid">
+            	<div class="span4">
+           	    <img src="images/Logo.gif" class="img-rounded" style="margin-left:1%" /> 
+                </div>
+                <div class="span8">
+                	<div class="titulo">
+                    	<h3>AUTOGESTI&Oacute;N S.M.A.U.Na.M.</h3>
+                    </div>
+                </div>
+        	</div>
+        	  </div>
+    </div>
+    <div class="span12">
+    	<div class="contenido_base">
+       		<h4>Consumo de Ordenes de Consulta por Auto Gesti&oacute;n</h4>
+             <?php 
+					 //Establecimiento de la conexi&oacute;n 
+					require_once('connections/honorarios.php'); 
+					$N_Afiliado = $_SESSION['N_Afiliado'];
+					//echo "Nro de Afiliado".$N_Afiliado;
+					// Controlo que No haya sacado más de 2 ordenes en el mes.- 
+					$Fecha = date("Y-m-d");
+					$dia = 1;
+					$mes = 1;
+					$ano = date("Y");
+					$fecha1= mktime(0, 0, 0, $mes, $dia, $ano);
+					$fecha_desde = date("Y-m-d", $fecha1);
+					$consulta = "SELECT ordenes_medicas.Numero, ordenes_medicas.Documento, ppadron.nombre as afiliado, ordenes_medicas.Fecha_emision, ordenes_medicas.hora, detalle_orden_medica.codigo, nomenclador.descripcion, ordenes_medicas.coseguro
+FROM ordenes_medicas, detalle_orden_medica, nomenclador, ppadron
 WHERE ordenes_medicas.Numero = detalle_orden_medica.orden_nro
 and detalle_orden_medica.codigo = nomenclador.codigo  
-AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision BETWEEN  '".$fecha_desde."' and '".$Fecha."' and  Forma_Pago <> 'ANUL'";
-$resultado = mysql_query($consulta);
-$Cantidad_Filas = mysql_num_rows($resultado);
-//echo "<br /> Cantidad de Filas Encontradas :$Cantidad_Filas <br />\n";
-if ($Cantidad_Filas < 1): 
-	echo "<br /> No se encontraron Cosumos para el Afiliado<br />\n";
-else: 
-//date_default_timezone_set('America/Argentina/Buenos_Aires'); 
-	//Recorrido del cursor de fila en fila
-	while ($fila = mysql_fetch_array($resultado)){
-	//Proceso de cada una de las filas
-	
-	echo "<tr>"; 
-	echo "<td>", $fila['Numero'], "</td>";
-	echo "<td>", $fila['Documento'], "</td>";
-	echo "<td>", $fila['Afiliado'], "</td>";
-	echo "<td><center>", $fila['Fecha_emision'], "</center></td>";
-	echo "<td>", $fila['hora'], "</td>";
-	echo "<td>", $fila['codigo'], "</td>";
-	echo "<td>", $fila['descripcion'], "</td>";
-	echo "<td>", $fila['coseguro'], "</td>";
-	if ($fila['Fecha_emision']==date("Y-m-d")){
-		echo "<td> 
-	<a class='btn anular btn-danger' id=",$fila['Numero'],">Anular Orden</a>
-				</td>";
-		}else{
-		 $nuevafecha = date('Y-m-d', strtotime($fila['Fecha_emision']) + 86400); 
-		 if ($nuevafecha==date("Y-m-d")){
-			 $hora =  date("h:i:s", time());
-			 $hora1 =  strtotime($hora);
-			 $hora2 =  strtotime($fila['hora']);
-			 //echo $hora;
-			 if ($hora2>$hora1){
-				 	echo "<td> 
-	<a class='btn anular btn-danger' id=",$fila['Numero'],">Anular Orden</a>
-				</td>";
-				 }else{
-					  echo "<td> 
-	<a class='btn btn-danger disabled' >Anular Orden</a>
-				</td>";
-				 }
-			 
-			 }else{
-				 echo "<td> 
-	<a class='btn btn-danger disabled' >Anular Orden</a>
-				</td>";
-			 }
-	}
-	echo "</tr>\n "; 
-	
-	} 
-	
-
-endif;
-// Liberamos los recursos de las consultas 
-mysql_free_result($resultado);
-
-// Se cierra la conexion
-mysql_close();
-
-
-?>
-</tbody>
-</table>
-
-<p>&nbsp;</p>
-<table width="217" border="0">
-  <tr>
-    <td width="112"><input type="button" value="Imprimir Consulta" name="Imprimir 2" onClick="javascript:print()" /></td>
-    <td width="89"><input type="button" value="Volver atr&aacute;s" name="volver atr&aacute;s222" onClick="history.back()" /></td>
-  </tr>
-</table>
-<p>&nbsp;</p>
-</div></td>
-</tr>
-<tr>
-  <td height="46" bgcolor="#0000FF">&nbsp;</td>
-</tr>
-</table>
-<center>
-<p>&nbsp;</p>
-<p><br>
-</p>
-<p><br /> 
-</p>
-<hr />
+AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision BETWEEN  '".									$fecha_desde."' and '".$Fecha."' and  Forma_Pago <> 'ANUL' and ppadron.n_afiliado=".$N_Afiliado;
+					$resultado = mysql_query($consulta);
+					$Cantidad_Filas = mysql_num_rows($resultado);
+					if ($Cantidad_Filas < 1){ 
+						echo "<br /> No se encontraron Cosumos para el Afiliado<br />\n";
+					}else{
+				?>
+            <table class="table table-striped table-bordered" style="margin-right: 20%; margin-left: -8%; font-size: 11px;">
+             	 <thead>
+    				<tr>
+      					<th>Nº de Orden</th>
+      					<th>Nº de Afiliado</th>
+                        <th>Nombre</th>
+                        <th>Fecha de Emisión</th>
+                        <th>Hora</th>
+                        <th>Código</th>
+                        <th>Descripción</th>
+                        <th>Coseguro</th>
+                        <th></th>
+    				</tr>
+  				</thead>
+               
+  				<tbody>
+					<?php while ($fila = mysql_fetch_array($resultado)){ ?>
+   					<tr>
+      					<td><?php echo $fila['Numero'];?></td>
+      					<td><?php echo $fila['Documento'];?></td>
+                        <td><?php echo $fila['afiliado'];?></td>
+      					<td><?php echo $fila['Fecha_emision'];?></td>
+                        <td><?php echo $fila['hora'];?></td>
+      					<td><?php echo $fila['codigo'];?></td>
+                        <td><?php echo $fila['descripcion'];?></td>
+      					<td><?php echo $fila['coseguro'];?></td>
+                        <td><?php 
+							$nuevafecha = date('Y-m-d', strtotime($fila['Fecha_emision']) + 86400); //fecha de emision + 1 dia
+		 					if ($nuevafecha==date("Y-m-d")){ //verifica si la fecha d emision (+1 dia) es igual a la fecha actual
+			 				$hora =  date("h:i:s", time());
+			 				$hora1 =  strtotime($hora);
+			 				$hora2 =  strtotime($fila['hora']);
+							if ($hora2>$hora1){ ?>
+								<a class='btn reimprimir btn-success ' id=",$fila['Numero'],">Reimprimir</a><?php
+							}else{ ?>
+								<a class='btn reimprimir btn-success disabled'>Reimprimir</a><?php
+							}
+							}else{ ?>
+							<a class='btn reimprimir btn-success ' id=",$fila['Numero'],">Reimprimir</a>
+							<?php }
+						?></td>
+    				</tr>
+                    <?php }?>
+  				</tbody>
+             </table>
+             <?php } ?>
+             <form class="form-inline" style="margin-left:25%;">             
+             	<div class="control-group">
+                	<input class="btn btn-info" type="button" value="Imprimir Consulta" name="Imprimir2" onClick="javascript:print()" />
+                    <input class="btn"type="button" value="Volver atr&aacute;s" name="volver atr&aacute;s222" onClick="history.back()" />
+                </div>
+              </form>
+        <div class="alert alert-info" style="margin-right:20%;margin-top:2%; margin-left:-10%;padding-top:1%">
+        	<strong>*Señor Afiliado:</strong><br/>
+            - Para poder ingresar al sistema de auto Gestión deberá enviar una solicitud <strong>Alta Usuario.</strong><br/>
+            - Para descargar el manual de Ayuda, seleccione 
+            <a target="_blank" href="http://www.smaunam.com.ar/wp-content/uploads/2015/01/Manual-Sistema-Autogestión.pdf" class="btn ">Descargar</a>
+           
+        </div>
+        </div>
+    </div>
+    <div class="span12">
+                	
+    </div>
+  </div>
+</div>
+</div>
 
 
 </body>

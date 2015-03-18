@@ -9,19 +9,15 @@
 <!-- DW6 -->
 <head>
 <!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
-<title>Auto Gesti&oacute;n  - P&aacute;gina principal</title>
+
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Auto Gesti&oacute;n  - P&aacute;gina principal</title>
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
 <link href="estilos/mis_estilos.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css" />
-
-
-
-
 <script type="text/javascript" src="ScriptLibrary/jquery-latest.pack.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootbox.js"></script>
-
 <script type="text/javascript" src="bootstrap/js/jquery.md5.min.js"></script>
 <script type="text/JavaScript">
 
@@ -126,8 +122,7 @@ function MM_validateForm() { //v4.0
                     	<h3>AUTOGESTI&Oacute;N S.M.A.U.Na.M.</h3>
                     </div>
                 </div>
-               
-            </div>
+        	</div>
         	  </div>
     </div>
     <div class="span12">
