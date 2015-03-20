@@ -302,14 +302,15 @@ session_start() ?>
     </table>
 </div>
          <div align="left">
-           <table width="662" border="0">
+           <table width="707" border="0">
            <tr>
-             <td width="445" class="subHeader Estilo3">&nbsp;</td>
-             <td width="207" class="subHeader Estilo3"><span class="subHeader">Recetario N&ordm;22 - </span><?php echo "$Ultimo_numero" ?></td>
+             <td width="369" class="subHeader Estilo3">&nbsp;</td>
+             <td width="328" class="subHeader Estilo3"><span class="subHeader">Recetario N&ordm;22 - </span><?php echo "$Ultimo_numero" ?></td>
            </tr>
            <tr>
              <td class="subHeader Estilo3">&nbsp;</td>
-             <td class="subHeader Estilo3"><span class="subHeader">Valido Hasta: </span><?php echo "$Fecha_Hasta" ?></td>
+             <td class="subHeader Estilo3"><p><span class="subHeader">Valido Hasta: </span><?php echo "$Fecha_Hasta" ?> </p>
+             <p> 50% Descuento Plan: <?php echo "$Plan"?> - SIN VADEMECUM</p></td>
            </tr>
                   </table>
          </div>
