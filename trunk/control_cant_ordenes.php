@@ -9,10 +9,10 @@ require_once('connections/honorarios.php');
 mysql_select_db($database_honorarios, $honorarios);
   
 //Preparaci&oacute;n y ejecuci&oacute;n de la consulta
-$N_Afiliado = $_POST['N_Afiliado'];
+$N_Afiliado = $_SESSION['N_Afiliado'];
 $Afiliado_Solo = substr($N_Afiliado, 0, -2); //Saco el Nº de Afilaido del Titular
-$Nro_Doc    = $_POST['Nro_Doc'];
-$Nombre     = $_POST['Nombre']; 
+$Nro_Doc    = $_SESSION['Nro_Doc'];
+$Nombre     = $_SESSION['Nombre']; 
 // Controlo que No haya sacado más de 2 ordenes en el mes.- 
 $Fecha = date("Y-m-d");
 
