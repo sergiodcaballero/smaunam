@@ -2,7 +2,8 @@
 //print_r($_GET);
 require_once('connections/honorarios.php'); 
 mysql_select_db($database_honorarios, $honorarios);
-$consulta_sql = "SELECT pass FROM ppadron WHERE email='".$_POST['mail']."' AND n_benef=00";
+$consulta_sql = "SELECT pass,n_afiliado FROM ppadron WHERE email='".$_POST['mail']."' AND n_benef=00";
+
 $res = mysql_query($consulta_sql);
 $Cantidad_Filas = mysql_num_rows($res);
 //$Cant = mysql_num_rows($resultado);
@@ -12,8 +13,10 @@ if ($Cantidad_Filas < 1){
 }else{
 	while ($fila = mysql_fetch_array($res)){
 		$pass = $fila['pass'];
+		$afiliado = $fila['n_afiliado'];
 	}
-	
+	$fecha = date("Y-m-d H:i:s");
+	$auditoria = "insert into auditoria (N_Afiliado, accion, fecha) values ('".$afiliado."','SOLICITUD DE RECUPERACION DE PASSWORD','".$fecha."')";
 //agregamos la dependencia de Swift Mailer
 		require_once 'php/ext/Swift-4.2.1/lib/swift_required.php';
 		
@@ -51,6 +54,7 @@ if ($Cantidad_Filas < 1){
 		//enviamos el mensaje
 		if($objMailer->send($objMensaje)){
 			$resultado['respuesta'] = 'SI';
+			mysql_query($auditoria , $honorarios) or die(mysql_error());
 		}else{
 			$resultado['respuesta'] = 'PROBLEMA';
 		}

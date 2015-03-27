@@ -4,6 +4,11 @@ session_start();
 if (!(isset($_SESSION['n_benef']))){
 		header('Location:index.php');
 	}
+	//else if (isset($_POST['id_orden'])){
+	//	header('Location:consultar_orden.php');
+		//echo "existeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+	
+	//	}
  ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,26 +17,67 @@ if (!(isset($_SESSION['n_benef']))){
 <!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
 
 <!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
-<meta http-equiv="Content-Type" content=" charset=iso-8859-1;width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Auto Gesti&oacute;n  - P&aacute;gina principal</title>
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
 <link href="estilos/mis_estilos.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css" />
+
 <script type="text/javascript" src="ScriptLibrary/jquery-latest.pack.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootbox.js"></script>
 <script type="text/javascript" src="bootstrap/js/jquery.md5.min.js"></script>
 <script type="text/JavaScript">
-
+	$(document).ready(function(e){
+		
+	$("#form_reimprimir").submit( function (E){  
+	//alert('holaa'); 
+   		var prueba = $(".reimprimir").val();
+     // return false; //Si devolvemos false, el formulario ya no se enviará.
+  	 });
+				
+		$(".reimprimir").click(function(evento){
+				//var aux= no;
+				 var num_orden = $(this).attr('id');//alert (num_orden);
+				 bootbox.dialog({
+                title: "Términos y condiciones Sistema de Autogestión SMAUNaM "+'<h6>  ORDENES DE CONSULTAS MÉDICAS WEB' +
+                    '</h6> ',
+                message: '<h5>  Sr/Sra. Afilado/a recuerde que:' +
+                    '</h5> ' +
+                    '- Las órdenes emitidas por el sistema web serán impresas por el afiliado sin que las mismas puedan ser duplicadas y/o fotocopiadas o alteradas. ' +
+                    '<br> ' +
+                    '- En el caso que el SMAUNaM detecte el cometido de alguna de estas situaciones o que no correspondan al buen uso del beneficio, descontará el 100% del valor de la orden médica de los haberes del titular; para lo cual el afiliado titular presta entera conformidad. Para el caso de una reiteración de los hechos se suspenderá para el afiliado titular y su grupo familiar el beneficio del uso del sistema de autogestión web. ' ,
+                buttons: {
+                    success: {
+                        label: "Aceptar",
+                        className: "btn-success",
+                        callback: function () {
+							var accion = "reimpresion de la orden N "+ num_orden;
+						$.post('agregar_auditoria.php',{accion:accion}
+							);
+// window.open("reimpresion.php?v1=4&v2=3", "popupId", "location=no,menubar=no,titlebar=no,resizable=no,toolbar=no, menubar=no,width=500,height=500"); 
+							document.getElementById("form_reimprimir").submit();
+                        }
+                    }
+                }
+            }
+        );
+			//if (aux=='si'){alert('hola');}
+			});	
+	});
 //-->
 </script>
 <style type="text/css">
 	.form-horizontal .control-label{
 		width:300px;}
 	
+	.encabezado{
+		min-width: 750px;
+		}
 </style>
 </head>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css" />
 <body>
 <div class="container">
 	<div class="contenido">
@@ -39,7 +85,7 @@ if (!(isset($_SESSION['n_benef']))){
   <div class="row-fluid">
     <div class="span12">
 		<div class="encabezado">
-        	<div class="row-fluid">
+        	<div class="row-fluid" >
             	<div class="span4">
            	    <img src="images/Logo.gif" class="img-rounded" style="margin-left:1%" /> 
                 </div>
@@ -70,13 +116,14 @@ if (!(isset($_SESSION['n_benef']))){
 FROM ordenes_medicas, detalle_orden_medica, nomenclador, ppadron
 WHERE ordenes_medicas.Numero = detalle_orden_medica.orden_nro
 and detalle_orden_medica.codigo = nomenclador.codigo  
-AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision BETWEEN  '".									$fecha_desde."' and '".$Fecha."' and  Forma_Pago <> 'ANUL' and ppadron.n_afiliado=".$N_Afiliado;
+AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision BETWEEN  '".									$fecha_desde."' and '".$Fecha."' and  Forma_Pago <> 'ANUL' and ppadron.n_afiliado=".$N_Afiliado." order by ordenes_medicas.Fecha_emision desc";
 					$resultado = mysql_query($consulta);
 					$Cantidad_Filas = mysql_num_rows($resultado);
 					if ($Cantidad_Filas < 1){ 
 						echo "<br /> No se encontraron Cosumos para el Afiliado<br />\n";
 					}else{
 				?>
+                <form id="form_reimprimir" target="_blank" name="form_reimprimir" action="reimpresion.php" method="post">
             <table class="table table-striped table-bordered" style="margin-right: 20%; margin-left: -8%; font-size: 11px;">
              	 <thead>
     				<tr>
@@ -104,24 +151,43 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
                         <td><?php echo $fila['descripcion'];?></td>
       					<td><?php echo $fila['coseguro'];?></td>
                         <td><?php 
-							$nuevafecha = date('Y-m-d', strtotime($fila['Fecha_emision']) + 86400); //fecha de emision + 1 dia
-		 					if ($nuevafecha==date("Y-m-d")){ //verifica si la fecha d emision (+1 dia) es igual a la fecha actual
-			 				$hora =  date("h:i:s", time());
+						$fecha_antigua = strtotime($fila['Fecha_emision'])- 86400;
+						$fecha_emision = strtotime($fila['Fecha_emision']);
+						$fecha_nueva = strtotime($fila['Fecha_emision'])+ 86400;
+						$fecha = date("Y-m-d");
+						$fecha_actual = strtotime($fecha);
+						if ($fecha_actual==$fecha_emision ){
+							$hora =  date("h:i:s", time());
+							
+			 				$hora1 =  strtotime($hora);
+			 				$hora2 =  strtotime($fila['hora']);
+							if ($hora2<$hora1){?>
+                            	<input type='hidden' name="id_orden" value="<?php echo$fila['Numero'];?>"/>
+								<a class='btn reimprimir btn-success ' id="<?php echo$fila['Numero'];?>">Reimprimir</a><?php								
+								}else{ ?>
+								<a class='btn     btn-success disabled'>Reimprimir</a><?php
+							}
+						}else if ($fecha_actual==$fecha_nueva){
+							$hora =  date("h:i:s", time());
 			 				$hora1 =  strtotime($hora);
 			 				$hora2 =  strtotime($fila['hora']);
 							if ($hora2>$hora1){ ?>
-								<a class='btn reimprimir btn-success ' id=",$fila['Numero'],">Reimprimir</a><?php
+                            <input type='hidden' name="id_orden" value="<?php echo$fila['Numero'];?>"/>
+								<a class='btn reimprimir btn-success ' id="<?php echo$fila['Numero'];?>">Reimprimir</a><?php
 							}else{ ?>
-								<a class='btn reimprimir btn-success disabled'>Reimprimir</a><?php
+								<a class='btn  btn-success disabled'>Reimprimir</a><?php
 							}
-							}else{ ?>
-							<a class='btn reimprimir btn-success ' id=",$fila['Numero'],">Reimprimir</a>
-							<?php }
+						}else{?>
+							<a class='btn  btn-success disabled'>Reimprimir</a><?php
+						}
+					
 						?></td>
     				</tr>
                     <?php }?>
   				</tbody>
              </table>
+            
+             </form>
              <?php } ?>
              <form class="form-inline" style="margin-left:25%;">             
              	<div class="control-group">
@@ -129,12 +195,12 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
                     <input class="btn"type="button" value="Volver atr&aacute;s" name="volver atr&aacute;s222" onClick="history.back()" />
                 </div>
               </form>
-        <div class="alert alert-info" style="margin-right:20%;margin-top:2%; margin-left:-10%;padding-top:1%">
-        	<strong>*Señor Afiliado:</strong><br/>
-            - Para poder ingresar al sistema de auto Gestión deberá enviar una solicitud <strong>Alta Usuario.</strong><br/>
-            - Para descargar el manual de Ayuda, seleccione 
-            <a target="_blank" href="http://www.smaunam.com.ar/wp-content/uploads/2015/01/Manual-Sistema-Autogestión.pdf" class="btn ">Descargar</a>
-           
+        <div class="alert alert-info" style="margin-right:5%;margin-top:2%; margin-left:-10%;padding-top:1%; text-align:justify;">
+        	<strong>Términos y condiciones Sistema de Autogestión SMAUNaM <br/>
+ORDENES DE CONSULTAS MÉDICAS WEB</strong><br/>
+            -Las órdenes emitidas por el sistema web serán impresas por el afiliado sin que las mismas puedan ser duplicadas y/o fotocopiadas o alteradas.<br/>
+-En el caso que el SMAUNaM detecte el cometido de alguna de estas situaciones o que no correspondan al buen uso del beneficio, descontará el 100% del valor de la orden médica de los haberes del titular; para lo cual el afiliado titular presta entera conformidad. Para el caso de una reiteración de los hechos se suspenderá para el afiliado titular y su grupo familiar el beneficio del uso del sistema de autogestión web.
+                       
         </div>
         </div>
     </div>
