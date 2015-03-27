@@ -43,148 +43,108 @@ require_once('connections/honorarios.php');
   
  ?> 
 <!--Cap11/cursor.php-->
-<html>
-<head><title>Auto Gesti&oacute;n </title>
-<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-<script type="text/javascript">
-	function confirmacion_impresion(form){
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Auto Gesti&oacute;n  - P&aacute;gina principal</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+<link href="estilos/mis_estilos.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css" />
+<script type="text/javascript" src="ScriptLibrary/jquery-latest.pack.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootbox.js"></script>
+<script type="text/javascript" src="bootstrap/js/jquery.md5.min.js"></script>
+<script type="text/JavaScript">
+
+$(document).ready(function(e){
+	$(".orden").click(function(evento){
 		if (confirm("¿Esta seguro de imprimir la orden? "))
 			{
-			 form.submit();
+				//alert('hola');
+				location.href = "/autogestion/control_cant_ordenes.php";
+			 	//return true;
+			}else{
+				return false;
 			}
-		}
+	});
+	
+});
+	
+	
+
 </script>
 <style type="text/css">
-<!--
-@import url("mm_restaurant1.css");
-.Blanco {
-	color: #FFFFFF;
-	font-size: 14px;
-}
-.Blanco {
-	font-weight: normal;
-}
-.blancoresaltado {
-	font-weight: bold;
-}
-.menu {
-	font-size: 14px;
-}
--->
+	
+	.contenido-base{
+		margin-left: -20%;}
+		
 </style>
 </head>
 <body>
- 
-<table width="1000" height="369" border="1">
-  <tr>
-    <th colspan="5" bgcolor="#99ccff"><div align="left"><font color='blue'><span class="logo"><img src="Image3.gif" alt="Logo" width="351" height="90" border="1" />AUTO GESTI&Oacute;N S.M.A.U.Na.M<br />
-    </span></font></div></th>
-  </tr>
-  <tr>
-  	<th>
-  <table width="216" height="266">
-  
-  <tr>
-    <td width="206">
-    <br/>
-    <div align="center" class="menu"><strong>
-      Orden de Consulta M&eacute;dica    </strong><br/>
-    </div>
+<div class="container">
+	<div class="contenido">
     
-    <table width="200" border="0">
-      <tr>
-        <td>
-        <form name="Pricipal" method="post" action="control_cant_ordenes.php">
-     <div align="center">
-          <input type="hidden" name="N_Afiliado" value="<?php echo $N_Afiliado?>">
-          <input type="hidden" name="Nro_Doc" value="<?php echo $Nro_Doc?>">
-          <input type="hidden" name="Nombre" value="<?php echo $Nombre?>">
-          <input type="hidden" name="Plan" value="<?php echo $Plan?>">
-          <input type="button" name="Imprimir_orden2" value="Imprimir Orden de Consulta" onClick="confirmacion_impresion(document.forms[0]);">
-        </div>
-    </form></td>
-      </tr>
-      <tr>
-        <td>
-        <form name="form1" method="post" action="consultar_orden.php">
-      <div align="center">
-          <input name="Consulta_Consumo" type="submit" id="Consulta_Consumo" value="Consultar Consumo Web Anual">
-        </div>
-    </form>
-       </td>
-      </tr>
-    </table><hr></td>
-  </tr>
-  <tr>
-    <td>
-    <br/>
-    <div align="center" class="menu"><strong>
-      Afiliados en Transito  </strong><br/> 
-      <table width="200" border="0">
-  <tr>
-    <td>
-    <form name="form5" method="post" action="consultar_autorizacion_afiliado.php">
-      <div align="center">
-      <input type="submit" name="button" id="button" value="Formulario Personal">
+  <div class="row-fluid">
+    <div class="span12">
+		<div class="encabezado">
+        	<div class="row-fluid">
+            	<div class="span4">
+           	    <img src="images/Logo.gif" class="img-rounded" style="margin-left:1%" /> 
+                </div>
+                <div class="span8">
+                	<div class="titulo">
+                    	<h3>AUTOGESTI&Oacute;N S.M.A.U.Na.M.</h3>
+                    </div>
+                </div>
+        	</div>
+        	  </div>
     </div>
-    </form>
-    </td>
-  </tr>
-  <tr>
-    <td>
-    <form name="form6" method="post" action="autorizacion_afiliado_grupo_flia.php"><div align="center">
-      <input type="submit" name="afiliado_transito" id="afiliado_transito" value="Formulario Grupo Familar"
-        <?php if($puede=='X'){echo 'enabled';} else{ echo 'disabled'; }?>>
-        
-    </div>
-    </form>
-      </td>
-  </tr>
-</table>
-<hr/>
-    </div></td>
-  </tr>
-  <tr>
-    <td height="50"><br/><div align="center" class="menu"><strong>
-    Mis Datos </strong><br/>
-    </div>
-    	<div align="center">
-    	  <table width="200" border="0">
-    	    <tr>
-    	      <td height="13"><div align="center">
-              <form name="form2" method="post" action="cambiar_password.php">
-       <div align="center">
-        <input type="submit" name="contrasena" id="contrasena" value="Modificar Contraseña"<?php if($puede=='X'){echo 'enabled';} else{ echo 'disabled'; }?>>
-       </div>     
-    </form>
-    	       
-  	        </div></td>
-    	      </tr>
-  	    </table>
-  	  </div>
-
-    </td>
-  </tr>
- 
-  
-</table>
-
-    </th>
-    <th height="176" colspan="5">
-    <div align="center">
-    	<table width="688" border='1'>
-          <caption style='font-size:16pt'>Datos del Afiliado
-            <br>
-          <br>
-          </caption>
-          <tr>
-            <th width="89">N&ordm; Afiliado </th>
-            <th width="132">Nombre</th>
-            <th width="96">Direcci&oacute;n</th>
-            <th width="99">Plan</th>
-            <th width="143">Parentesco</th>
-            <th width="89">Benef</th>
-			 <?php
+    <div class="span12">
+    	<div class="contenido_principal">
+       	<div class="row-fluid">
+       		  <div class="span3">
+              	<ul class="nav nav-list bs-docs-sidenav">                	
+                    <li class="active"><a href="#"><i class="icon-home"></i><i class="icon-chevron-right"></i> Inicio</a></li>
+                          <li><a href="cerrar_sesion.php"><i class="icon-remove "></i> Salir</a></li>
+                    <li class="nav-head"><a style=" color:#999;"><strong>ORDEN DE CONSULTA MEDICA</strong></a> </li>
+              
+                    <li><a href="#" class="orden"><i class="icon-chevron-right"></i>Imprimir Orden de consulta</a></li>
+                          <li><a href="consultar_orden.php"><i class="icon-chevron-right"></i>Consultar consumo web anual</a></li>
+                    <li class="nav-head"><a style=" color:#999;"><strong>AFILIADOS EN TRANSITO</strong></a> </li>
+                      <li ><a href="consultar_autorizacion_afiliado.php"><i class="icon-chevron-right"></i>Formulario Personal</a></li>
+                      <?php if($puede=='X'){?>
+                          <li><a href="autorizacion_afiliado_grupo_flia.php"><i class="icon-chevron-right" ></i>Formulario Grupo Familiar</a></li> <?php } else{ ?>
+                           <li class="disabled"><a ><i class="icon-chevron-right" ></i>Formulario Grupo Familiar</a></li>
+                          <?php } ?>
+                           <li class="nav-head"><a style=" color:#999;"><strong>MIS DATOS</strong></a> </li>
+                             <?php if($puede=='X'){?>
+                            <li ><a href="/autogestion/cambiar_password.php"><i class="icon-chevron-right"></i>Modificar Contrase&ntilde;a</a></li>
+                            <?php } else{ ?>
+                            	<li class="disabled"><a><i class="icon-chevron-right"></i>Modificar Contrase&ntilde;a</a></li>
+                             <?php } ?>
+                </ul>
+               		
+                </div>
+                <div class="span8">
+                <br />
+                <table class="table table-striped table-condensed">
+                   <caption > <h3>Mis Datos <br/></h3></caption>
+                   <thead>
+                		  <tr>
+                		    <td ><center><strong>N&ordm; Afiliado</strong></center></td>
+                		    <td ><center><strong>Nombre</strong></center></td>
+                		    <td ><center><strong>Direcci&oacute;n</strong></center></td>
+                		    <td ><center><strong>Plan</strong></center></td>
+                		    <td ><center><strong>Parentesco</strong></center></td>
+                		    <td ><center><strong>Beneficiario</strong></center></td>
+              		    </tr>
+                   </thead>
+      			   <tbody>
+                   <?php
 	
   //Establecimiento de la conexi&oacute;n 
   
@@ -236,36 +196,29 @@ require_once('connections/honorarios.php');
   
   
 ?>
-          </tr>
-        </table>
-        <br/>
-        <form name="form3" method="post" action="cerrar_sesion.php">
-        <input name="cerrar_sesión" type="submit" id="cerrar_sesion" value="Cerrar Sesi&oacute;n" style='width:130px; height:40px;font-size:12px;'>
-        </form>
-      </div>
-    </th>
-  </tr>
-  <tr>
-  
-  </tr>
-   
-    <tr>
-    <td height="46" colspan="5" bgcolor="#0000FF"><form name="form3" method="post" action="index.php">
-    </form>
-      <form action="" method="post" name="form4" class="Blanco">
-        <p>Recuerde configurar su impresora para imprimir en Hojas A4</p>
-        <p>Ante 
-          cualquier duda o consulta sobre el funcionamiento del sistema por favor enviar un email a <span class="blancoresaltado">autogestion@smaunam.com.ar </span></p>
-      </form>
-    <p>&nbsp;</p></td>
-  </tr>
-</table>
-<center>
-<p>&nbsp;</p>
-<p><br>
-</p>
-<p><br /> 
-</p>
-<hr />
+                   </tbody>
+                 </table>
+                 <form name="form3" method="post" action="cerrar_sesion.php">
+           		    <center><input name="cerrar_sesion" type="submit" class="btn btn-large btn-primary" id="button" value="Cerrar Sesión" /></center>
+       		      </form>
+                </div>
+                
+        
+        </div>
+       
+    </div>
+    <div class="span12">
+             <div class="alert alert-info" style="margin-right:10%;margin-top:2%; padding-top:1%;padding-left:0px;margin-left:3%;padding-left:1%">
+        	<strong>*Señor Afiliado:</strong><br/>
+            - Recuerde configurar su impresora para imprimir en Hojas A4.<br/>
+            - Ante cualquier duda o consulta sobre el funcionamiento del sistema por favor enviar un email a <strong>autogestion@smaunam.com.ar </strong>
+           
+        </div>    	
+    </div>
+  </div>
+</div>
+</div>
+
+
 </body>
 </html>
