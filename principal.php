@@ -58,6 +58,7 @@ require_once('connections/honorarios.php');
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootbox.js"></script>
 <script type="text/javascript" src="bootstrap/js/jquery.md5.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-tooltip.js"></script>
 <script type="text/JavaScript">
 
 $(document).ready(function(e){
@@ -84,7 +85,7 @@ $(document).ready(function(e){
 		
 </style>
 </head>
-<body>
+<body data-spy="scroll">
 <div class="container">
 	<div class="contenido">
     
@@ -131,7 +132,7 @@ $(document).ready(function(e){
                 </div>
                 <div class="span8">
                 <br />
-                <table class="table table-striped table-condensed">
+                <table class="table table-striped table-condensed table-responsive">
                    <caption > <h3>Mis Datos <br/></h3></caption>
                    <thead>
                 		  <tr>
@@ -208,9 +209,8 @@ $(document).ready(function(e){
        
     </div>
     <div class="span12">
-             <div class="alert alert-info" style="margin-right:10%;margin-top:2%; padding-top:1%;padding-left:0px;margin-left:3%;padding-left:1%">
+             <div class="alert alert-info" style="margin-right:6%;margin-top:2%; padding-top:1%;padding-left:-10px;margin-left:0%;">
         	<strong>*Señor Afiliado:</strong><br/>
-            - Recuerde configurar su impresora para imprimir en Hojas A4.<br/>
             - Ante cualquier duda o consulta sobre el funcionamiento del sistema por favor enviar un email a <strong>autogestion@smaunam.com.ar </strong>
            
         </div>    	
