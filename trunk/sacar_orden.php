@@ -158,7 +158,7 @@ session_start() ?>
 		  mysql_close();
 		  
 	   ?><script language="JavaScript">
-		alert("Cargue 2 Hojas A4 en su impresora y presione el botón Imprimir, EL sistema cerrará la ventana de impresión automáticamente luego de 30 segundos. En caso de no imprimirse correctamente usted puede reimprimir la orden en 'consultar consumo web anual' dentro de las proximas 24 horas");
+		alert("Cargue 2 Hojas A4 en su impresora y presione el botón Imprimir, EL sistema cerrará la ventana de impresión automáticamente luego de 30 segundos.");
 		</script>&nbsp;
         
           <input type="button" value="Imprimir Orden " name="imprimir" id="imprimir" onclick="javascript:print()"  style = "width: 100 px; height: 50px  "/> 

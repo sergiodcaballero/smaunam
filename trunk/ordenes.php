@@ -7,7 +7,7 @@ require_once('connections/honorarios.php');
 mysql_select_db($database_honorarios, $honorarios);
 $sql = "select DATE_FORMAT(Fecha_emision,'%d-%m-%y') as fecha,numero, plan from ordenes_medicas where numero=".$_POST['id_orden']."";
 $sql = "SELECT ordenes_medicas.Numero, ordenes_medicas.Documento, ppadron.nombre as afiliado,  DATE_FORMAT(ordenes_medicas.Fecha_emision,'%d-%m-%y') as fecha,
-DATE_FORMAT(DATE_ADD(DATE_FORMAT(ordenes_medicas.Fecha_emision,'%Y-%m-%d'), INTERVAL 31 DAY) ,'%d-%m-%Y') as fecha_hasta,  ordenes_medicas.Plan, detalle_orden_medica.codigo, nomenclador.descripcion, ordenes_medicas.coseguro
+DATE_FORMAT(DATE_ADD(DATE_FORMAT(ordenes_medicas.Fecha_emision,'%Y-%m-%d'), INTERVAL 90 DAY) ,'%d-%m-%Y') as fecha_hasta,  ordenes_medicas.Plan, detalle_orden_medica.codigo, nomenclador.descripcion, ordenes_medicas.coseguro
 FROM ordenes_medicas, detalle_orden_medica, nomenclador, ppadron
 WHERE ordenes_medicas.Numero = detalle_orden_medica.orden_nro
 and detalle_orden_medica.codigo = nomenclador.codigo  
