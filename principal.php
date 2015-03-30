@@ -82,10 +82,19 @@ $(document).ready(function(e){
 	
 	.contenido-base{
 		margin-left: -20%;}
-	
+	.scrollspy-example {
+  
+  overflow: auto;
+  position: relative;
+}
+.scrollspy-example1 {
+  overflow: auto;
+  position: relative;
+  height:250px
+}
 </style>
 </head>
-<body data-spy="scroll" >
+<body data-spy="scroll" data-target="#navbar" class="scrollspy-example">
 <div class="container">
 	<div class="contenido">
     
@@ -114,7 +123,7 @@ $(document).ready(function(e){
                     <li class="nav-head"><a style=" color:#999;"><strong>ORDEN DE CONSULTA MEDICA</strong></a> </li>
               
                     <li><a href="#" class="orden"><i class="icon-chevron-right"></i>Imprimir Orden de consulta</a></li>
-                          <li><a href="consultar_orden.php"><i class="icon-chevron-right"></i>Consultar consumo web anual</a></li>
+                          <li><a href="consultar_orden.php"><i class="icon-chevron-right"></i>Consultar consumo web</a></li>
                     <li class="nav-head"><a style=" color:#999;"><strong>AFILIADOS EN TRANSITO</strong></a> </li>
                       <li ><a href="consultar_autorizacion_afiliado.php"><i class="icon-chevron-right"></i>Formulario Personal</a></li>
                       <?php if($puede=='X'){?>
@@ -130,7 +139,7 @@ $(document).ready(function(e){
                 </ul>
                		
                 </div>
-                <div class="span8">
+                <div class="span8 scrollspy-example" data-spy="scroll" data-target="#navbarExample"  >
                 <br />
                 <table class="table table-striped table-condensed table-responsive">
                    <caption > <h3>Mis Datos <br/></h3></caption>
@@ -141,7 +150,7 @@ $(document).ready(function(e){
                 		    <td ><center><strong>Direcci&oacute;n</strong></center></td>
                 		    <td ><center><strong>Plan</strong></center></td>
                 		    <td ><center><strong>Parentesco</strong></center></td>
-                		    <td ><center><strong>Beneficiario</strong></center></td>
+                		   
               		    </tr>
                    </thead>
       			   <tbody>
@@ -174,7 +183,7 @@ $(document).ready(function(e){
 		 echo "<td> <center>", $fila['Domicilio'], "</center></td>";
 		 echo "<td> <center>", $fila['Plan_'], "</center></td>";
 		 echo "<td> <center>", $fila['Parentesco'], "</center></td>";
-		 echo "<td> <center>", $fila['n_benef'], "</center></td>";
+		 //echo "<td> <center>", $fila['n_benef'], "</center></td>";
 		 echo "</tr>\n";  
 		 $Nombre =  $fila['Nombre']; 
 		 $Plan = $fila['Plan_']; 
@@ -203,13 +212,24 @@ $(document).ready(function(e){
            		    <center><input name="cerrar_sesion" type="submit" class="btn btn-large btn-primary" id="button" value="Cerrar Sesión" /></center>
        		      </form>
                 </div>
-                
+                <div class="span8 scrollspy-example1" data-spy="scroll" data-target="#navbarExample" >
+                	<div class="alert alert-info" style="text-align:justify;margin-left:1%;margin-right:1%;">                 
+  <h4>ULTIMAS NOVEDADES </h4>
+  <br/>
+	   <p><strong><small>Reimpresión de Ordenes</small></strong><br/>
+	     En caso de que la orden emitida no ha sido impresa correctamente puede reimprimir la misma por un lapso de 24 horas. Para poder realizar la reimpresión primero debe seleccionar "Consultar Consumo Web" y de ahi seleccione el boton "Reimprimir"</p>
+	   <p><br>
+	     <strong><small>Configuración de Impresora</small></strong><br/>
+	     Recuerde configurar su impresora para imprimir en Hojas A4
+	     </p>
+           	      </div>  
+                </div>
         
         </div>
        
     </div>
     <div class="span12">
-             <div class="alert alert-info" style="margin-right:6%;margin-top:2%; padding-top:1%;padding-left:-10px;margin-left:0%;">
+             <div class="alert alert-info" style="text-align:justify;margin-right:10%;margin-top:2%; padding-top:1%;padding-left:-10px;margin-left:1%;">
         	<strong>*Señor Afiliado:</strong><br/>
             - Ante cualquier duda o consulta sobre el funcionamiento del sistema por favor enviar un email a <strong>autogestion@smaunam.com.ar </strong>
            

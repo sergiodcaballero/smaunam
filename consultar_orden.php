@@ -28,7 +28,15 @@ if (!(isset($_SESSION['n_benef']))){
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootbox.js"></script>
 <script type="text/javascript" src="bootstrap/js/jquery.md5.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-tooltip.js"></script>
 <script type="text/JavaScript">
+var pagina="/autogestion/index.php"
+		function redireccionar() 
+		{
+		location.reload();
+		} 
+		setTimeout ("redireccionar()", 500000);
+	
 	$(document).ready(function(e){
 		
 	$("#form_reimprimir").submit( function (E){  
@@ -72,9 +80,12 @@ if (!(isset($_SESSION['n_benef']))){
 	.form-horizontal .control-label{
 		width:300px;}
 	
-	.encabezado{
-		min-width: 750px;
-		}
+	
+		.scrollspy-example {
+  
+  overflow: auto;
+  position: relative;
+}
 </style>
 </head>
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css" />
@@ -97,8 +108,8 @@ if (!(isset($_SESSION['n_benef']))){
         	</div>
         	  </div>
     </div>
-    <div class="span12">
-    	<div class="contenido_base">
+    <div class="span12 scrollspy-example tabla_afiliado" data-spy="scroll" data-target="#navbarExample">
+    	<div class="contenido_base " >
        		<h4>Consumo de Ordenes de Consulta por Auto Gesti&oacute;n</h4>
              <?php 
 					 //Establecimiento de la conexi&oacute;n 
@@ -123,7 +134,7 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
 						echo "<br /> No se encontraron Cosumos para el Afiliado<br />\n";
 					}else{
 				?>
-                <form id="form_reimprimir" target="_blank" name="form_reimprimir" action="reimpresion.php" method="post">
+                <form id="form_reimprimir" target="_blank" name="form_reimprimir" action="reimpresion.php" method="post" >
             <table class="table table-striped table-bordered" style="margin-right: 20%; margin-left: -8%; font-size: 11px;">
              	 <thead>
     				<tr>
@@ -194,13 +205,16 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
                 	<input class="btn btn-info" type="button" value="Imprimir Consulta" name="Imprimir2" onClick="javascript:print()" />
                     <input class="btn"type="button" value="Volver atr&aacute;s" name="volver atr&aacute;s222" onClick="history.back()" />
                 </div>
-              </form>
+              </form></div></div>
+        <div class="span12" >
+        <div class="contenido_base">
         <div class="alert alert-info" style="margin-right:5%;margin-top:2%; margin-left:-10%;padding-top:1%; text-align:justify;">
         	<strong>Términos y condiciones Sistema de Autogestión SMAUNaM <br/>
 ORDENES DE CONSULTAS MÉDICAS WEB</strong><br/>
             -Las órdenes emitidas por el sistema web serán impresas por el afiliado sin que las mismas puedan ser duplicadas y/o fotocopiadas o alteradas.<br/>
 -En el caso que el SMAUNaM detecte el cometido de alguna de estas situaciones o que no correspondan al buen uso del beneficio, descontará el 100% del valor de la orden médica de los haberes del titular; para lo cual el afiliado titular presta entera conformidad. Para el caso de una reiteración de los hechos se suspenderá para el afiliado titular y su grupo familiar el beneficio del uso del sistema de autogestión web.
                        
+        
         </div>
         </div>
     </div>
