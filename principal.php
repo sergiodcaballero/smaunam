@@ -82,10 +82,10 @@ $(document).ready(function(e){
 	
 	.contenido-base{
 		margin-left: -20%;}
-		
+	
 </style>
 </head>
-<body data-spy="scroll">
+<body data-spy="scroll" >
 <div class="container">
 	<div class="contenido">
     
