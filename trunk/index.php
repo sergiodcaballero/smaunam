@@ -158,7 +158,7 @@ function MM_validateForm() { //v4.0
         	<strong>*Señor Afiliado:</strong><br/>
             - Para poder ingresar al sistema de auto Gestión deberá enviar una solicitud <strong>Alta Usuario.</strong><br/>
             - Para descargar el manual de Ayuda, seleccione 
-            <a target="_blank" href="http://www.smaunam.com.ar/wp-content/uploads/2015/01/Manual-Sistema-Autogestión.pdf" class="btn ">Descargar</a>
+            <a target="_blank" href="http://www.smaunam.com.ar/wp-content/uploads/2015/04/man_sis_auto.pdf" class="btn ">Descargar</a>
            
         </div>
         </div>
