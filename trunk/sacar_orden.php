@@ -97,27 +97,31 @@ session_start() ?>
 				 }
 			// Libero REsultado_Nomenclador	  
 			mysql_free_result($Resultado_Nomenclador);
+			// // Cargo las bases. 
+			$Fecha = date("Y-m-d");
+			$Hora = date("h:i:s", time());
+			/// funcion sumar dias 
+			//sumar dias 
+			$dia = date("d");
+			$dia = $dia + 90;
+			$mes = date("m");
+			$ano = date("Y");
+			$suma = mktime(0, 0, 0, $mes, $dia, $ano);
+			$suma_fecha = date("Y-m-d", $suma);
+			$Fecha_imp = date("d-m-Y");
+			$Fecha_Hasta = date("d-m-Y", $suma);
+					  
 			// pregunto si es especial Coseguro 0.
 			if ($especiales == 'SI'): 
-				$Coseguro = 0; 
+				$Coseguro = 0;				
+				$Fecha_Hasta = '31-12-'.$ano; 
+				
 				//echo "entro"; 
 			endif; 
 			//echo $Coseguro;
 			// 
 				 
-		  // Cargo las bases. 
-		  $Fecha = date("Y-m-d");
-		  $Hora = date("h:i:s", time());
-		  /// funcion sumar dias 
-		  //sumar dias 
-		$dia = date("d");
-		$dia = $dia + 90;
-		$mes = date("m");
-		$ano = date("Y");
-		$suma = mktime(0, 0, 0, $mes, $dia, $ano);
-		$suma_fecha = date("Y-m-d", $suma);
-		$Fecha_imp = date("d-m-Y");
-		$Fecha_Hasta = date("d-m-Y", $suma);
+		 
 			  
 	//	  $Hora = strftime("%I:%M:%S", time());
 		 $Carga_Cabecera ="insert into ordenes_medicas set  regio = 22, Matricula = 11111, MatriRP = 11111, MONTO = '".$Monto."', Documento = '".$N_Afiliado."', Afiliado = '".$Nombre ."', Coseguro = '".$Coseguro."', Fecha_emision = '".$Fecha."', docu_de = '".$Nro_Doc."' , forma_depago = 0 , Operador = 'AutoGestion', nro_practicas = 1, codigo = '".$Codigo."' , hora = '".$Hora."', plan = '".$Plan."', guardo4 = 00000, `Forma_Pago` = 'CCTE', `CUOTAS` = 1, `regional` = 'Posadas'"; 		
