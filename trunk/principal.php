@@ -48,13 +48,18 @@ require_once('connections/honorarios.php');
 <!-- DW6 -->
 <head>
 <!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
-
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Auto Gesti&oacute;n  - P&aacute;gina principal</title>
+<!—[if lt IE 9]>
+      <script type="text/javascript" src="ScriptLibrary/jquery-latest.pack.js"></script>
+    
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+    <![endif]—>
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
 <link href="estilos/mis_estilos.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css" />
-<script type="text/javascript" src="ScriptLibrary/jquery-latest.pack.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootbox.js"></script>
 <script type="text/javascript" src="bootstrap/js/jquery.md5.min.js"></script>
@@ -116,7 +121,7 @@ $(document).ready(function(e){
     <div class="span12">
     	<div class="contenido_principal">
        	<div class="row-fluid">
-       		  <div class="span3">
+       		  <div class="span3" >
               	<ul class="nav nav-list bs-docs-sidenav">                	
                     <li class="active"><a href="#"><i class="icon-home"></i><i class="icon-chevron-right"></i> Inicio</a></li>
                           <li><a href="cerrar_sesion.php"><i class="icon-remove "></i> Salir</a></li>
