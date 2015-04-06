@@ -5,13 +5,24 @@ $N_Afiliado = $_SESSION['N_Afiliado'];
 require_once('connections/honorarios.php'); 
 mysql_select_db($database_honorarios, $honorarios);
 $sql = "select DATE_FORMAT(Fecha_emision,'%d-%m-%y') as fecha,numero, plan from ordenes_medicas where numero=".$_POST['id_orden']."";
-$sql = "SELECT ordenes_medicas.Numero, ordenes_medicas.Documento, ppadron.nombre as afiliado,  DATE_FORMAT(ordenes_medicas.Fecha_emision,'%d-%m-%y') as fecha,
-DATE_FORMAT(DATE_ADD(DATE_FORMAT(ordenes_medicas.Fecha_emision,'%Y-%m-%d'), INTERVAL 90 DAY) ,'%d-%m-%Y') as fecha_hasta,  ordenes_medicas.Plan, detalle_orden_medica.codigo,
+$sql = "select coseguro from detalle_orden_medica where orden_nro=".$_POST['id_orden']." and coseguro=0";
+$resultado = mysql_query($sql, $honorarios) or die(mysql_error());
+$Cantidad_Filas = mysql_num_rows($resultado);
+if ($Cantidad_Filas==1){ //sin coseguro
+$anio = date("Y");
+		$fech = "'31-12-".$anio."'";
+	}else{ // con coseguro
+		$fech = "DATE_FORMAT(DATE_ADD(DATE_FORMAT(ordenes_medicas.Fecha_emision,'%Y-%m-%d'), INTERVAL 90 DAY) ,'%d-%m-%Y') ";
+	}
+	//print_r($fech);
+$sql = "SELECT ordenes_medicas.Numero, ordenes_medicas.Documento, ppadron.nombre as afiliado,  DATE_FORMAT(ordenes_medicas.Fecha_emision,'%d-%m-%Y') as fecha,
+".$fech." as fecha_hasta,  ordenes_medicas.Plan, detalle_orden_medica.codigo,
 ppadron.n_benef as benef
 FROM ordenes_medicas, detalle_orden_medica, nomenclador, ppadron
 WHERE ordenes_medicas.Numero = detalle_orden_medica.orden_nro
 and detalle_orden_medica.codigo = nomenclador.codigo  
 AND ordenes_medicas.documento =".$N_Afiliado." and  Forma_Pago <> 'ANUL' and ppadron.n_afiliado=".$N_Afiliado." and ordenes_medicas.Numero=".$_POST['id_orden']." order by ordenes_medicas.Fecha_emision DESC";
+//print_r($sql);
 $resultado = mysql_query($sql, $honorarios) or die(mysql_error());
 while ($fila = mysql_fetch_array($resultado)){ 
 	$Fecha_imp = $fila['fecha'];
