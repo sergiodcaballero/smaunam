@@ -123,7 +123,7 @@ var pagina="/autogestion/index.php"
 					$ano = date("Y");
 					$fecha1= mktime(0, 0, 0, $mes, $dia, $ano);
 					$fecha_desde = date("Y-m-d", $fecha1);
-					$consulta = "SELECT ordenes_medicas.Numero, ordenes_medicas.Documento, ppadron.nombre as afiliado, ordenes_medicas.Fecha_emision, ordenes_medicas.hora, detalle_orden_medica.codigo, nomenclador.descripcion, ordenes_medicas.coseguro
+					$consulta = "SELECT ordenes_medicas.Numero, ordenes_medicas.Documento, ppadron.nombre as afiliado, DATE_FORMAT(ordenes_medicas.Fecha_emision,'%d-%m-%Y') as Fecha_emision, ordenes_medicas.hora, detalle_orden_medica.codigo, nomenclador.descripcion, ordenes_medicas.coseguro
 FROM ordenes_medicas, detalle_orden_medica, nomenclador, ppadron
 WHERE ordenes_medicas.Numero = detalle_orden_medica.orden_nro
 and detalle_orden_medica.codigo = nomenclador.codigo  
