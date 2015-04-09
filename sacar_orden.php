@@ -43,13 +43,14 @@ session_start() ?>
 		 //Establecimiento de la conexi&oacute;n 
    		require_once('connections/honorarios.php'); 
    		//Preparaci&oacute;n y ejecuci&oacute;n de la consulta
+		
 	  $N_Afiliado = $_SESSION['N_Afiliado']; 
 	  $Afiliado_Solo = substr($N_Afiliado, 0, -2); //Saco el Nº de Afilaido del Titular
 	  $Nro_Doc    = $_SESSION['Nro_Doc'];
-	  $Nombre     = $_SESSION['Nombre']; 
+	 // $Nombre     = $_SESSION['Nombre']; 
 	  $especiales = $_SESSION['especial'];
 	  // Buscamos Plan 
-	 $consulta_plan = "SELECT  Plan_ , Parentesco, n_benef  FROM ppadron where N_afiliado =".$N_Afiliado." and  Num_Doc =".$Nro_Doc;
+	 $consulta_plan = "SELECT  Plan_ , Parentesco, n_benef,nombre  FROM ppadron where N_afiliado =".$N_Afiliado." and  Num_Doc =".$Nro_Doc;
 	 $resultado = mysql_query($consulta_plan) or die(mysql_error());
 	 $Cantidad_Filas = mysql_num_rows($resultado);
 	  //echo "<br /> Cantidad de Filas Encontradas :$Cantidad_Filas <br />\n";
@@ -61,7 +62,7 @@ session_start() ?>
 				 //Proceso de cada una de las filas
 				 $Plan = $fila['Plan_'];
 				 $benef = $fila['n_benef'];   
-														
+				 $Nombre = $fila['nombre'];									
 				 }	
 		  	endif; 
 			
@@ -156,7 +157,7 @@ session_start() ?>
 		  $Resultado_Detalle=mysql_query($Carga_Detalle);
 		  
 		  /// Cargo Recetario de Farmacia 
-		  $Carga_Recetario = "insert into farmacia set n_receta = '".$Ultimo_numero."', regio = 22, n_orden = '".$Ultimo_numero."', N_AFILIADO = '".$N_Afiliado."', afiliado = '".$Afiliado_Solo."', plan = '".$Plan."', fecha_emis = '".$Fecha."', fecha_val ='".$suma_fecha."', hora_emis = '".$Hora."', operador_emis = 'AutoGestion'"; 
+		  $Carga_Recetario = "insert into farmacia set n_receta = '".$Ultimo_numero."', regio = 22, n_orden = '".$Ultimo_numero."', N_AFILIADO = '".$N_Afiliado."', afiliado = '".$Afiliado_Solo."', plan = '".$Plan."', fecha_emis = '".$Fecha."', fecha_val ='".$suma_fecha."', hora_emis = '".$Hora."', operador_emis = 'AutoGestion', APELLIDO_Y_NOMBRE='$Nombre'"; 
 		  $Resultado_Farmacia=mysql_query($Carga_Recetario);
 		  
 		  mysql_close();
@@ -211,7 +212,7 @@ session_start() ?>
              </tr>
              <tr>
                <td><span class="subHeader">Afiliado Nro: <?php echo "$N_Afiliado" ?></span></td>
-               <td bordercolor="1"><span class="subHeader">Nombre: <?php echo "$Nombre" ?> </span></td>
+               <td bordercolor="1"><span class="subHeader">Nombre: <?php echo $Nombre; ?> </span></td>
                <td class="subHeader">Plan: <?php echo "$Plan"?></td>
              </tr>
              <tr>
