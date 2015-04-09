@@ -35,6 +35,7 @@ session_start() ?>
 			 $n_benef = $fila['n_benef'];
 			 $estado =  $fila['estado']; 
 			 $nuevo =   $fila['nuevo']; 
+			
 			 //echo "<tr>";       
 			 //echo "<td>", $fila['pass'], "</td>";
 			 //echo "<td>", $fila['n_benef'], "</td>";
@@ -84,6 +85,7 @@ session_start() ?>
 						} else {
 					
 							$_SESSION['N_Afiliado'] = $_REQUEST['N_Afiliado'];
+					
 							$_SESSION['Nro_Doc'] = $_REQUEST['Nro_Doc'];
 							$_SESSION['n_benef'] = $n_benef; // paso el beneficiario para activar el botón contraseña
 							header('Location:principal.php');
