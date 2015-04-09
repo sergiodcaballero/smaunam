@@ -64,6 +64,7 @@ var pagina="/autogestion/index.php"
 							var accion = "reimpresion de la orden N "+ num_orden;
 						$.post('agregar_auditoria.php',{accion:accion}
 							);
+							$('input[name="id_orden"]').val(num_orden);
 // window.open("reimpresion.php?v1=4&v2=3", "popupId", "location=no,menubar=no,titlebar=no,resizable=no,toolbar=no, menubar=no,width=500,height=500"); 
 							document.getElementById("form_reimprimir").submit();
                         }
