@@ -49,6 +49,7 @@
 </head>
 
 <body onLoad="setTimeout(window.close, 90000)">
+
 <input type="button" value="Imprimir Orden " name="imprimir" id="imprimir" onclick="javascript:print()"  style = "width: 100 px; height: 50px  "/>
 <?php 
 include_once('ordenes.php');
