@@ -163,13 +163,16 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
                         <td><?php echo $fila['descripcion'];?></td>
       					<td><?php echo $fila['coseguro'];?></td>
                         <td><?php 
+						
 						$fecha_antigua = strtotime($fila['Fecha_emision'])- 86400;
+						
 						$fecha_emision = strtotime($fila['Fecha_emision']);
 						$fecha_nueva = strtotime($fila['Fecha_emision'])+ 86400;
-						$fecha = date("Y-m-d");
+						$fecha = date("d-m-Y");
 						$fecha_actual = strtotime($fecha);
 						if ($fecha_actual==$fecha_emision ){
-							$hora =  date("h:i:s", time());
+							
+							$hora =  date("H:i:s", time());
 							
 			 				$hora1 =  strtotime($hora);
 			 				$hora2 =  strtotime($fila['hora']);
@@ -180,7 +183,8 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
 								<a class='btn     btn-success disabled'>Reimprimir</a><?php
 							}
 						}else if ($fecha_actual==$fecha_nueva){
-							$hora =  date("h:i:s", time());
+							
+							$hora =  date("H:i:s", time());
 			 				$hora1 =  strtotime($hora);
 			 				$hora2 =  strtotime($fila['hora']);
 							if ($hora2>$hora1){ ?>
