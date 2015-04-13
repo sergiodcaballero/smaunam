@@ -100,7 +100,8 @@ session_start() ?>
 			mysql_free_result($Resultado_Nomenclador);
 			// // Cargo las bases. 
 			$Fecha = date("Y-m-d");
-			$Hora = date("h:i:s", time());
+			$Hora = date("H:i:s", time());
+//$Hora = date("H:i:s");
 			/// funcion sumar dias 
 			//sumar dias 
 			$dia = date("d");
