@@ -38,8 +38,7 @@ session_start() ?>
 
 <body>
 <p>
-<?php
-	   
+<?php	   
 		 //Establecimiento de la conexi&oacute;n 
    		require_once('connections/honorarios.php'); 
    		//Preparaci&oacute;n y ejecuci&oacute;n de la consulta
@@ -131,6 +130,7 @@ session_start() ?>
 		  $Resultado=mysql_query($Carga_Cabecera);
 		 //$Resultado=mysql_query($Carga_Cabecera,$link);
 		  $Ultimo_numero  =  mysql_insert_id();
+		 
 		 // echo($Ultimo_numero);
 		 // printf ("Nuevo registro con el id %d.\n".$nro_orden );
 		//   echo $nro_orden; 

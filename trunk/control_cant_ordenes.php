@@ -67,7 +67,8 @@ else:
 	$_SESSION['n_benef'] = $n_benef; // paso el beneficiario para activar el botón contraseña
 	$_SESSION['Nombre'] = $Nombre;
 	$_SESSION['especial'] = $especiales; 
-	header('Location:sacar_orden.php');
+	//$_POST['id_orden']='70';
+	header('Location:sacar_orden1.php');
 endif;
 //mysql_free_result($resultado1); 
 //mysql_free_result($resultado2); 	
