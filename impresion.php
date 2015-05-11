@@ -58,14 +58,14 @@ $_POST['id_orden'] = $_SESSION['mi_id_orden'];
  $_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_SESSION['mi_id_orden'];;
 		 
 //include_once('ordenes.php');
-include_once('orden_mod.php');
+include_once('ordenes.php');
 ?>
 <br/>
 <div class="lineas"></div><br />
 <?php //<div class='saltopagina'></div>
 //include_once('recetario.php');
 $_POST['id_orden'] = $_SESSION['mi_id_orden'];;
-include_once('recetario_mod.php');
+include_once('recetario.php');
 ?>
 </body>
 </html>

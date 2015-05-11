@@ -1,158 +1,221 @@
 <?php 
-//session_start();
-//print_r($_POST);
-$N_Afiliado = $_SESSION['N_Afiliado'];
-require_once('connections/honorarios.php'); 
-mysql_select_db($database_honorarios, $honorarios);
-$sql = "select DATE_FORMAT(Fecha_emision,'%d-%m-%y') as fecha,numero, plan from ordenes_medicas where numero=".$_POST['id_orden']."";
-$sql = "select coseguro from detalle_orden_medica where orden_nro=".$_POST['id_orden']." and coseguro=0";
-$resultado = mysql_query($sql, $honorarios) or die(mysql_error());
-$Cantidad_Filas = mysql_num_rows($resultado);
-if ($Cantidad_Filas==1){ //sin coseguro
-$anio = date("Y");
-		$fech = "'31-12-".$anio."'";
-	}else{ // con coseguro
-		$fech = "DATE_FORMAT(DATE_ADD(DATE_FORMAT(ordenes_medicas.Fecha_emision,'%Y-%m-%d'), INTERVAL 90 DAY) ,'%d-%m-%Y') ";
-	}
-	//print_r($fech);
-$sql = "SELECT ordenes_medicas.Numero, ordenes_medicas.Documento, ppadron.nombre as afiliado,  DATE_FORMAT(ordenes_medicas.Fecha_emision,'%d-%m-%Y') as fecha,
-".$fech." as fecha_hasta,  ordenes_medicas.Plan, detalle_orden_medica.codigo,
-ppadron.n_benef as benef
-FROM ordenes_medicas, detalle_orden_medica, nomenclador, ppadron
-WHERE ordenes_medicas.Numero = detalle_orden_medica.orden_nro
-and detalle_orden_medica.codigo = nomenclador.codigo  
-AND ordenes_medicas.documento =".$N_Afiliado." and  Forma_Pago <> 'ANUL' and ppadron.n_afiliado=".$N_Afiliado." and ordenes_medicas.Numero=".$_POST['id_orden']." order by ordenes_medicas.Fecha_emision DESC";
-//print_r($sql);
-$resultado = mysql_query($sql, $honorarios) or die(mysql_error());
+ require_once('connections/honorarios.php'); 
+$numero_orden = $_POST['id_orden'];
+		//include('../autogestion/qrcode/qrimage.php');
+		
+	 // text output   
+
+
+	$sql= "SELECT f.n_orden,f.afiliado,f.n_benef, p.nombre, DATE_FORMAT(f.fecha_emis,'%d-%m-%Y') as fecha, DATE_FORMAT(f.fecha_val,'%d-%m-%Y') as fecha_hasta FROM farmacia f inner join ppadron p on p.N_afiliado=f.N_afiliado where f.n_orden=$numero_orden";
+	$resultado = mysql_query($sql, $honorarios) or die(mysql_error());
 while ($fila = mysql_fetch_array($resultado)){ 
+	$num_afiliado = $fila['afiliado'];
 	$Fecha_imp = $fila['fecha'];
-	$Ultimo_numero = $fila['Numero'];
-	$Plan = $fila['Plan'];
-	$Nombre = $fila['afiliado'];
-	//$Descripcion = $fila['descripcion'];
-	//$Coseguro = $fila['coseguro'];
+	$Ultimo_numero = $fila['n_orden'];
+	$categ = $fila['n_benef'];
+	$Nombre = $fila['nombre'];
+	
 	$Fecha_Hasta = $fila['fecha_hasta'];
-  $benef = $fila['benef'];
+	$codigo = $fila['n_benef'];
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin tÃ­tulo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin título</title>
+<style type="text/css">
+
+.tamanio {
+	font-size: 10px;
+}
+body p {
+	font-size: 9px;
+}
+body{
+	
+	font-size:10px;}
+.pageName strong {
+	font-size: 14px;
+}
+.mi_estilo{	
+border-collapse: collapse;
+	border: 1px solid gray;
+	}
+	
+</style>
 </head>
 
 <body>
-<table width="819" border="1">
+
+<table width="682"   border="1" class="mi_estilo">
+ 
+  <tr border="0" style="font-size:0px;">
+    <td >&nbsp;</td>
+    <td >&nbsp;</td>
+    <td >&nbsp;</td>
+    <td width="33" >&nbsp;</td>
+    <td width="105" align="right" >&nbsp;</td>
+    <td width="147" align="right" >&nbsp;</td>
+    <td colspan="3" align="right" >&nbsp;</td>
+    <td width="37" align="right" >&nbsp;</td>
+    <td width="61" align="right" >&nbsp;</td>
+    
+  </tr>
   <tr>
-           <td width="346"><span class="logo"><img src="Logo.gif" alt="logo" width="328" height="78" align="left" /></span></td>
-           <td width="728"><p align="center" class="pageName"><strong>Recetario de Farmacia</strong></p>
-           <p align="center" class="pageName">AUTO GESTI&Oacute;N S.M.A.U.Na.M</p></td>
-         </tr>
-       </table>
-<div align="left">
-  <table width="662" border="0">
-    <tr>
-      <td><span class="bodyText Estilo2">Sede Central: Jujuy N&ordm; 1745 Posadas Tel-Fax 03752-438504 - Eldorado: Tel: 03751-430621 - Ober&aacute;: Tel: 03755-420423</span></td>
-      <td class="subHeader">&nbsp;</td>
-    </tr>
-    <tr>
-      <td width="579"><p class="bodyText Estilo2">IVA Exento - CUIT: 30-65776243-8 - Fecha Inic. Actv.: 01/11/89 </p></td>
-      <td width="73" class="subHeader"><div align="right" class="subHeader">
-          <div align="left"></div>
-      </div></td>
+    <td height="72"  colspan="4" ><img src="images/Logo.gif" width="173" height="68"  /></td>
+    <td colspan="10"  >
+    <table width="487" border="0">
+  <tr>
+    <td width="29" height="59" rowspan="2" >&nbsp;</td>
+    <td width="263" rowspan="2" ><p align="center" style="font-size:15px"><strong>Recetario de Farmacia</strong></p>
+    <p align="center" style="font-size:15px">AUTO GESTI&Oacute;N S.M.A.U.Na.M</p></td>
+    <td width="122"><strong>Recetario Nº22-<?php echo $Ultimo_numero;?> </strong></td>
+    <td width="55" rowspan="2" >
+		<!--[if IE]>
+			<?php 
+             // text output   
+        $codeContents = $numero_orden.' 22'; 
+             // generating 
+            $text = QRcode::text($codeContents); 
+            $raw = join("<br/>", $text); 
+            $raw = strtr($raw, array( 
+                '0' => '<span style="color:white">&#9608;&#9608;</span>', 
+                '1' => '&#9608;&#9608;' 
+            )); echo '<tt style="font-size:3px">'.$raw.'</tt>'; 
+                ?>
+           <![endif]-->
+            <!--[if !IE]><!-->
+            <?php echo '<img  src="qr.php" />';
+        
+		 //<![endif]-->?>
+			<!-- <![endif]-->
+    </td>
+  </tr>
+  <tr>
+    <td width="122" height="49"></td>
     </tr>
     </table>
-</div>
-         <div align="left">
-           <table width="707" border="0">
-           <tr>
-             <td width="369" class="subHeader Estilo3">&nbsp;</td>
-             <td width="328" class="subHeader Estilo3"><span class="subHeader">Recetario N&ordm;22 - </span><?php echo "$Ultimo_numero" ?></td>
-           </tr>
-           <tr>
-             <td class="subHeader Estilo3">&nbsp;</td>
-             <td class="subHeader Estilo3"><p><span class="subHeader">Valido Hasta: </span><?php echo "$Fecha_Hasta" ?> </p>
-             <p> 50% Descuento Plan: <?php echo "$Plan"?> - SIN VADEMECUM</p></td>
-           </tr>
-                  </table>
-         </div>
-       <table width="789" border="1">
-         <tr>
-           <td colspan="3"><span class="Estilo2">Fecha Prescripci&oacute;n </span></td>
-           <td width="192">N&uacute;mero de Beneficiario </td>
-           <td width="39">Categ</td>
-           <td width="102">Edad</td>
-           <td width="330" rowspan="12"><img src="images/recet2.gif" width="330" height="374" /></td>
-         </tr>
-         <tr>
-           <td width="26">&nbsp;</td>
-           <td width="27">&nbsp;</td>
-           <td width="27">&nbsp;</td>
-           <td align="center"><?php echo "$N_Afiliado" ?></td>
-           <td align="center"><?php echo "$benef" ?></td>
-           <td>&nbsp;</td>
-         </tr>
-         <tr>
-           <td colspan="4" rowspan="2"><span class="Estilo2">Apellido y Nombre/s: <?php echo "$Nombre" ?></span>  </td>
-           <td><span class="Estilo2">M</span>             <div align="center" class="Estilo2"></div></td>
-           <td><span class="Estilo2">F</span></td>
-         </tr>
-         
-         <tr>
-           <td><span class="Estilo2">N&ordm; </span></td>
-           <td><span class="Estilo2">Letras</span></td>
-         </tr>
-         <tr>
-           <td height="29" colspan="4"><p class="Estilo2">Generico</p></td>
-           <td rowspan="2">&nbsp;</td>
-           <td rowspan="2">&nbsp;</td>
-         </tr>
-         <tr>
-           <td height="23" colspan="4"><p class="Estilo2">R/P</p></td>
-         </tr>
-         <tr>
-           <td height="25" colspan="4"><p class="Estilo2">Gen&eacute;rico</p></td>
-           <td rowspan="2">&nbsp;</td>
-           <td rowspan="2">&nbsp;</td>
-         </tr>
-         <tr>
-           <td height="25" colspan="4"><p>R/P</p></td>
-         </tr>
-         <tr>
-           <td colspan="2">C&oacute;digo</td>
-           <td colspan="4">Diagn&oacute;stico Principal: </td>
-         </tr>
-         <tr>
-           <td colspan="2">C&oacute;digo</td>
-           <td colspan="4">Diagn&oacute;stico Secundario: </td>
-         </tr>
-         <tr>
-           <td height="59" colspan="3" rowspan="2"><p>Emitido: </p>
-           <p><span class="subHeader Estilo3"><?php echo "$Fecha_imp" ?></span></p></td>
-           <td height="59" colspan="3">Matricula: </td>
-         </tr>
-         <tr>
-           <td height="55" colspan="3"><p>Firma y Sello del Profesional:</p></td>
-         </tr>
-       </table>
-       <table width="422" height="79" border="1">
-         <tr>
-           <td width="106"><div align="center">TROQUEL 1 </div></td>
-           <td width="99"><div align="center">TROQUEL2 </div></td>
-           <td width="103"><div align="center">TROQUEL3</div></td>
-           <td width="86"><div align="center">TROQUEL 4  </div></td>
-         </tr>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="14" class="tamanio"><div style="float:left">Sede Central: Tucum&aacute;n N&ordm;2452 Posadas Tel-Fax 0376-4438504 - Eldorado: Tel: 03751-430621 - Ober&aacute; Tel: 03755-420423 -<br/> 
+    IVA Exento - CUIT: 30-65776243-8 - Fecha Inic. Actv.: 01/11/89 </div>
+    <div style="float:right; font-size:15px;">
+   <strong>
+    50% </strong><br/><div style="font-size:10px">Plan Descuento</div>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" >Fecha Preinscripci&oacute;n</td>
+    <td colspan="3">N&uacute;mero de Beneficiario</td>
+    <td width="29">Categ</td>
+    <td width="27">Edad</td>
+    <td width="30">PU</td>
+    <td>TOTAL</td>
+    <td colspan="4" rowspan="4">TROQUEL 1</td>
+  </tr>
+  <tr>
+    <td width="31">&nbsp;</td>
+    <td width="42" height="16">&nbsp;</td>
+    <td width="51">&nbsp;</td>
+    <td colspan="3"><?php echo $num_afiliado;?></td>
+    <td ><?php echo $categ;?></td>
+    <td >&nbsp;</td>
+    <td >&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6" rowspan="2">Apellido/s y Nombre/s: <?php echo $Nombre;?></td>
+    <td>M</td>
+    <td>F</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>N&ordm;</td>
+    <td>Letras</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30" colspan="6">Gen&eacute;rico:<br />
+    </td>
+    <td rowspan="2">&nbsp;</td>
+    <td rowspan="2">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td colspan="4" rowspan="3">TROQUEL 2</td>
+  </tr>
+  <tr>
+    <td height="29" colspan="6">R/P:<br />
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="28" colspan="6">Gen&eacute;rico:<br /></td>
+    <td rowspan="2">&nbsp;</td>
+    <td rowspan="2">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="26" colspan="6">R/P:<br /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td colspan="4" rowspan="3">TROQUEL 3</td>
+  </tr>
+  <tr>
+    <td height="16" colspan="3">Codigo</td>
+    <td colspan="7">Diagn&oacute;stico Principal <br /></td>
+  </tr>
+  <tr>
+    <td height="16" colspan="3">Codigo</td>
+    <td colspan="7">Diagn&oacute;stico Secundario <br /></td>
+  </tr>
+  <tr>
+    <td colspan="3"><strong>Emitido 
+      <?php echo $Fecha_imp;?> <br  />
+      V&aacute;lido hasta <?php echo $Fecha_Hasta; ?><br  />
+      Recetario N&ordm; 22 - <?php echo $Ultimo_numero;?></strong></td>
+    <td height="60" colspan="3">Firma y Sello del Profesional</td>
+    <td height="60" colspan="4">Matricula</td>
+    <td colspan="4">TROQUEL 4</td>
+  </tr>
+  <tr>
+    <td colspan="5">DATOS DEL AFILIADO</td>
+    <td colspan="9">EXCLUSIVO USO FARMACIA</td>
+  </tr>
+  <tr>
+    <td height="35" colspan="3" >&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td height="35" colspan="2">Fecha vta</td>
+    <td height="35">&nbsp;</td>
+    <td height="35">&nbsp;</td>
+    <td height="35" colspan="3">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">Firma</td>
+    <td colspan="2">Aclaraci&oacute;n</td>
+    <td>A/C Afiliado</td>
+    <td colspan="8" rowspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="34" colspan="3">&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">DNI</td>
+    <td colspan="2">Telefono</td>
+    <td>A/C SMAUNAM</td>
+    <td colspan="8">Sello y Firma</td>
+  </tr>
 </table>
-       <table width="61" border="0">
-         <tr>
-           <td width="20" align="center"><?php
-	
-		// displaying 
-	echo '<tt style="font-size:4px">'.$raw.'</tt>'; 
 
-    ?></td>
-         </tr>
-       </table>
 </body>
 </html>
