@@ -68,7 +68,7 @@ else:
 	$_SESSION['Nombre'] = $Nombre;
 	$_SESSION['especial'] = $especiales; 
 	//$_POST['id_orden']='70';
-	header('Location:sacar_orden1.php');
+	header('Location:sacar_orden.php');
 endif;
 //mysql_free_result($resultado1); 
 //mysql_free_result($resultado2); 	

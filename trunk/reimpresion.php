@@ -52,13 +52,13 @@
 //include_once('ordenes.php');
 //include('qr.php');
 $_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_POST['id_orden'];
-include_once('orden_mod.php');
+include_once('ordenes.php');
 ?>
 <br/>
 <div class="lineas"></div><br />
  <?php //<div class='saltopagina'></div>
 //include_once('recetario.php');
-include_once('recetario_mod.php');
+include_once('recetario.php');
 ?>
 
 </body>
