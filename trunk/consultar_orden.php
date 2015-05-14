@@ -135,7 +135,7 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
 						echo "<br /> No se encontraron Cosumos para el Afiliado<br />\n";
 					}else{
 				?>
-                <form id="form_reimprimir" target="_blank" name="form_reimprimir" action="reimpresion.php" method="post" >
+                <form id="form_reimprimir" target="_blank" name="form_reimprimir" action="reimpresion.php" method="post">
             <table class="table table-striped table-bordered" style="margin-right: 20%; margin-left: -8%; font-size: 11px;">
              	 <thead>
     				<tr>
@@ -149,8 +149,7 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
                         <th>Coseguro</th>
                         <th></th>
     				</tr>
-  				</thead>
-               
+  				</thead>               
   				<tbody>
 					<?php while ($fila = mysql_fetch_array($resultado)){ ?>
    					<tr>
@@ -195,8 +194,7 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
 							}
 						}else{?>
 							<a class='btn  btn-success disabled'>Reimprimir</a><?php
-						}
-					
+						}					
 						?></td>
     				</tr>
                     <?php }?>

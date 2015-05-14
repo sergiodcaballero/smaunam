@@ -34,12 +34,13 @@
 						alert("A Modificado Su contraseña Con Exito");
 						</script>
 						 <script language="JavaScript" type="text/javascript">
-							var pagina="/autogestion/Inicio.html"
-							function redireccionar() 
-							{
-							location.href=pagina
-							} 
-							setTimeout ("redireccionar()", 1000);
+							//var pagina
+							location.href="/autogestion/index.php"
+							//function redireccionar() 
+							//{
+							//=pagina
+							//} 
+							//setTimeout ("redireccionar()", 0);
 							  </script> <?	
 		} else {
 			?>

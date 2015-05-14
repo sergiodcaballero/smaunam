@@ -1,4 +1,4 @@
-<?php session_start() ?> 
+<?php session_start();  ?> 
 <html>
 <head><title></title>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
@@ -24,7 +24,7 @@
 						alert("La Contraseña actual cargada No es correcta");
 						</script>
 						 <script language="JavaScript" type="text/javascript">
-							var pagina="/autogestion/cambiar_password.php"
+							var pagina="/autogestion/cambiar_password_nuevo1.php"
 							function redireccionar() 
 							{
 							location.href=pagina
@@ -60,7 +60,7 @@
 						alert("Las Contraseñas cargadas No son Iguales");
 						</script>
 						 <script language="JavaScript" type="text/javascript">
-							var pagina="/autogestion/cambiar_password.php"
+							var pagina="/autogestion/cambiar_password_nuevo1.php"
 							function redireccionar() 
 							{
 							location.href=pagina
@@ -75,7 +75,7 @@
 						alert("Los Campos de Contraseñas son Necesarias");
 						</script>
 						 <script language="JavaScript" type="text/javascript">
-							var pagina="/autogestion/cambiar_password.php"
+							var pagina="/autogestion/cambiar_password_nuevo1.php"
 							function redireccionar() 
 							{
 							location.href=pagina
