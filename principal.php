@@ -137,7 +137,7 @@ $(document).ready(function(e){
                           <?php } ?>
                            <li class="nav-head"><a style=" color:#999;"><strong>MIS DATOS</strong></a> </li>
                              <?php if($puede=='X'){?>
-                            <li ><a href="/autogestion/cambiar_password.php"><i class="icon-chevron-right"></i>Modificar Contrase&ntilde;a</a></li>
+                            <li ><a href="/autogestion/cambiar_password_nuevo1.php"><i class="icon-chevron-right"></i>Modificar Contrase&ntilde;a</a></li>
                             <?php } else{ ?>
                             	<li class="disabled"><a><i class="icon-chevron-right"></i>Modificar Contrase&ntilde;a</a></li>
                              <?php } ?>

@@ -12,6 +12,7 @@ session_start() ?>
   $blanco = strlen($Pass);
    mysql_select_db($database_honorarios, $honorarios);
   $consulta = "SELECT N_Afiliado, Nombre, Domicilio, Plan_ , Parentesco, pass, n_benef, estado, nuevo  FROM ppadron where N_afiliado =".$N_Afiliado." and  Num_Doc =".$Nro_Doc;
+//  print_r($consulta);
 	$resultado = mysql_query($consulta, $honorarios) or die(mysql_error());
 	 $Cantidad_Filas = mysql_num_rows($resultado);
   if ($Cantidad_Filas < 1):  
@@ -65,8 +66,7 @@ session_start() ?>
 					if ($nuevo  === 'SI' AND $n_benef === '00') {
 						$_SESSION['N_Afiliado'] = $_REQUEST['N_Afiliado'];
 						$_SESSION['Nro_Doc'] = $_REQUEST['Nro_Doc'];
-						header('Location:cambiar_password.php');
-						
+						header('Location:cambiar_password_nuevo1.php');						
 										
 					} else {
 						if ($nuevo  === 'SI') {
