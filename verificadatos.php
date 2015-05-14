@@ -12,9 +12,9 @@ session_start() ?>
   $blanco = strlen($Pass);
    mysql_select_db($database_honorarios, $honorarios);
   $consulta = "SELECT N_Afiliado, Nombre, Domicilio, Plan_ , Parentesco, pass, n_benef, estado, nuevo  FROM ppadron where N_afiliado =".$N_Afiliado." and  Num_Doc =".$Nro_Doc;
-//  print_r($consulta);
+
 	$resultado = mysql_query($consulta, $honorarios) or die(mysql_error());
-	 $Cantidad_Filas = mysql_num_rows($resultado);
+	 $Cantidad_Filas = mysql_num_rows($resultado);  //print_r($Cantidad_Filas);
   if ($Cantidad_Filas < 1):  
   	?>
 						<script language="JavaScript">
