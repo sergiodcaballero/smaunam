@@ -113,8 +113,7 @@ border-collapse: collapse;
     <td colspan="3">N&uacute;mero de Beneficiario</td>
     <td width="29">Categ</td>
     <td width="27">Edad</td>
-    <td width="30">PU</td>
-    <td>TOTAL</td>
+    <td colspan="2"><center>Sexo</center></td>
     <td colspan="4" rowspan="4">TROQUEL 1</td>
   </tr>
   <tr>
@@ -124,49 +123,41 @@ border-collapse: collapse;
     <td colspan="3"><?php echo $num_afiliado;?></td>
     <td ><?php echo $categ;?></td>
     <td >&nbsp;</td>
-    <td >&nbsp;</td>
-    <td>&nbsp;</td>
+    <td width="30" rowspan="2" style="font-size:12px" >M</td>
+    <td rowspan="2" style="font-size:12px">F</td>
   </tr>
   <tr>
     <td colspan="6" rowspan="2">Apellido/s y Nombre/s: <?php echo $Nombre;?></td>
-    <td>M</td>
-    <td>F</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td rowspan="2">N&ordm;</td>
+    <td rowspan="2">Letras</td>
   </tr>
   <tr>
-    <td>N&ordm;</td>
-    <td>Letras</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td height="29">PU</td>
+    <td>TOTAL</td>
   </tr>
   <tr>
     <td height="30" colspan="6">Gen&eacute;rico:<br />
     </td>
     <td rowspan="2">&nbsp;</td>
     <td rowspan="2">&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td colspan="4" rowspan="3">TROQUEL 2</td>
+    <td rowspan="2">&nbsp;</td>
+    <td rowspan="2">&nbsp;</td>
+    <td colspan="4" rowspan="2">TROQUEL 2</td>
   </tr>
   <tr>
     <td height="29" colspan="6">R/P:<br />
     </td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
   </tr>
   <tr>
     <td height="28" colspan="6">Gen&eacute;rico:<br /></td>
     <td rowspan="2">&nbsp;</td>
     <td rowspan="2">&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td rowspan="2">&nbsp;</td>
+    <td rowspan="2">&nbsp;</td>
+    <td colspan="4" rowspan="3">TROQUEL 3</td>
   </tr>
   <tr>
     <td height="26" colspan="6">R/P:<br /></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td colspan="4" rowspan="3">TROQUEL 3</td>
   </tr>
   <tr>
     <td height="16" colspan="3">Codigo</td>
@@ -175,6 +166,7 @@ border-collapse: collapse;
   <tr>
     <td height="16" colspan="3">Codigo</td>
     <td colspan="7">Diagn&oacute;stico Secundario <br /></td>
+    <td colspan="4" rowspan="2">TROQUEL 4</td>
   </tr>
   <tr>
     <td colspan="3"><strong>Emitido 
@@ -183,7 +175,6 @@ border-collapse: collapse;
       Recetario N&ordm; 22 - <?php echo $Ultimo_numero;?></strong></td>
     <td height="60" colspan="3">Firma y Sello del Profesional</td>
     <td height="60" colspan="4">Matricula</td>
-    <td colspan="4">TROQUEL 4</td>
   </tr>
   <tr>
     <td colspan="5">DATOS DEL AFILIADO</td>

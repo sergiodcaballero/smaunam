@@ -2,6 +2,7 @@
 ob_start();
 session_start() ?> 
 <?php
+
 	//Establecimiento de la conexi&oacute;n 
    require_once('connections/honorarios.php'); 
   
