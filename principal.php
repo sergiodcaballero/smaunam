@@ -1,4 +1,7 @@
 <?php session_start();
+if (!isset($_SESSION['n_benef'])){
+		header('Location:index.php');
+	}
 require_once('connections/honorarios.php'); 
 
 

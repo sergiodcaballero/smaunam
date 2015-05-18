@@ -1,6 +1,8 @@
 <?php session_start() ?> 
 <html>
-<head><title></title>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title></title>
 </head>
 <body>
 <?php
@@ -31,7 +33,7 @@
 			$cargo_audit = mysql_query($auditoria , $honorarios) or die(mysql_error());
 			?>
 						<script language="JavaScript">
-						alert("A Modificado Su contraseÃ±a Con Exito");
+						alert("A Modificado Su contraseña Con Exito");
 						</script>
 						 <script language="JavaScript" type="text/javascript">
 							//var pagina
@@ -45,7 +47,7 @@
 		} else {
 			?>
 						<script language="JavaScript">
-						alert("Las ContraseÃ±as cargadas No son Iguales");
+						alert("Las Contraseñas cargadas No son Iguales");
 						</script>
 						 <script language="JavaScript" type="text/javascript">
 							var pagina="/autogestion/cambiar_password_nuevo.php"
@@ -59,7 +61,7 @@
 	} else {
 		?>
 						<script language="JavaScript">
-						alert("Los Campos de ContraseÃ±as son Necesarias");
+						alert("Los Campos de Contraseñas son Necesarias");
 						</script>
 						 <script language="JavaScript" type="text/javascript">
 							var pagina="/autogestion/cambiar_password_nuevo.php"

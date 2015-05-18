@@ -8,7 +8,10 @@
 	if (isset($_POST['id_orden'])){
 		$numero_orden = $_POST['id_orden'];
 		
-		
+	}else if ($_SESSION['id_orden']){
+		$datos = explode("__", $_SESSION['id_orden']);
+		$numero_orden = $datos[1];$_POST['id_orden'] =$datos[1];
+	}
 		 // Configuring SVG
     
   //  $dataText   = 'PHP QR Code :)';
@@ -42,7 +45,7 @@ $anio = date("Y");
 	}else{ // con coseguro
 		$fech = "DATE_FORMAT(DATE_ADD(DATE_FORMAT(d.fecha,'%Y-%m-%d'), INTERVAL 90 DAY) ,'%d-%m-%Y')";
 	}
-	}
+
 	$sql = "select d.orden_nro as numero,d.afiliado, p.nombre, p.PLAN_ as plan, d.codigo, DATE_FORMAT(d.fecha,'%d-%m-%Y') as fecha,".$fech."  as fecha_hasta, n.Descripcion, d.coseguro from nomenclador n inner join (detalle_orden_medica d inner join ppadron p on p.N_afiliado=d.afiliado) on n.codigo=d.codigo where d.orden_nro=".$_POST['id_orden']." ";
 	$resultado = mysql_query($sql, $honorarios) or die(mysql_error());
 while ($fila = mysql_fetch_array($resultado)){ 

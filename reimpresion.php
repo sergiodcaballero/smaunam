@@ -1,4 +1,5 @@
-<?php session_start();
+<?php session_start();//print_r($_GET);print_r($_REQUEST);
+
 //include ('qrcode/phpqrcode.php');
 //QRcode::png('some othertext 1234'); 
 //ob_start();
@@ -10,7 +11,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 <meta http-equiv="Content-Type" content="text/html;  charset=iso-8859-1" />
 <title>Auto Gesti&oacute;n  - P&aacute;gina principal</title>
 <link href="impresion.css" rel="stylesheet" type="text/css" media="print"/>
@@ -49,15 +50,28 @@
 
 <input type="button" value="Imprimir Orden " name="imprimir" id="imprimir" onclick="javascript:print()"  style = "width: 100 px; height: 50px  "/>
 <?php 
+//print_r($_POST);
 //include_once('ordenes.php');
 //include('qr.php');
-$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_POST['id_orden'];
+if (isset($_GET['id_orden'])){
+	$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_GET['id_orden'];
+	$_POST['id_orden'] = $_GET['id_orden'];
+	}else{
+	$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_POST['id_orden'];
+	}
+
 include_once('ordenes.php');
 ?>
 <br/>
 <div class="lineas"></div><br />
  <?php //<div class='saltopagina'></div>
 //include_once('recetario.php');
+if (isset($_GET['id_orden'])){
+	$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_GET['id_orden'];
+	$_POST['id_orden'] = $_GET['id_orden'];
+	}else{
+	$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_POST['id_orden'];
+	}
 include_once('recetario.php');
 ?>
 

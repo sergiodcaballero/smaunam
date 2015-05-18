@@ -1,4 +1,12 @@
 <?php session_start(); 
+if (!isset($_SESSION['n_benef'])){
+		$vista_volver = 'si'; //primera vez que entro en el sist
+	}else{
+		$vista_volver = 'no';
+	}
+if (!isset($_SESSION['N_Afiliado'])){
+	header('Location:index.php');
+}
 require_once('connections/honorarios.php'); 
 $pass='no';
 $pass1='no';
@@ -200,7 +208,13 @@ if (isset($_POST['guardar_cambios']) and $_POST['guardar_cambios']=='si'){
                 </div>
               </div>
               <div class="control-group">
-              <a class="btn" href="#" style="margin-left:2%;"><i class="icon-arrow-left"></i>&nbsp;Volver</a>                   
+              <?php if ($vista_volver=='si'){?>
+				   <a class="btn volver_atras" href="cerrar_sesion.php" style="margin-left:2%;"><i class="icon-arrow-left"></i>&nbsp;Volver</a>     
+				<?php }else{ ?>
+					  <a class="btn volver_atras" href="principal.php" style="margin-left:2%;"><i class="icon-arrow-left"></i>&nbsp;Volver</a>     
+				<?php }?>
+             
+                           
               <button type="submit" name="contraseña" class="btn btn-success pull-right" style="margin-right:15%;"> <i class=" icon-pencil icon-white"></i>&nbsp;Cambiar Contraseña</button> <input type='hidden' name='guardar_cambios' value="si"/>               </div>
             </form>
             </div>

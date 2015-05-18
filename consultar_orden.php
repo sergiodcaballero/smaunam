@@ -64,8 +64,11 @@ var pagina="/autogestion/index.php"
 							var accion = "reimpresion de la orden N "+ num_orden;
 						$.post('agregar_auditoria.php',{accion:accion}
 							);
+							//alert(num_orden);
 							$('input[name="id_orden"]').val(num_orden);
-// window.open("reimpresion.php?v1=4&v2=3", "popupId", "location=no,menubar=no,titlebar=no,resizable=no,toolbar=no, menubar=no,width=500,height=500"); 
+							//alert($('input[name="id_orden"]').val());
+// window.open("reimpresion.php?v1=4&v2=3", "popupId", "location=no,menubar=no,titlebar=no,resizable=no,toolbar=no, menubar=no,width=500,height=500");
+								 //document.getElementById("id_orden").value(num_orden);
 							document.getElementById("form_reimprimir").submit();
                         }
                     }
@@ -135,7 +138,7 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
 						echo "<br /> No se encontraron Cosumos para el Afiliado<br />\n";
 					}else{
 				?>
-                <form id="form_reimprimir" target="_blank" name="form_reimprimir" action="reimpresion.php" method="post">
+                <form id="form_reimprimir" target="_blank" name="form_reimprimir" action="reimpresion.php" method="get,post">
             <table class="table table-striped table-bordered" style="margin-right: 20%; margin-left: -8%; font-size: 11px;">
              	 <thead>
     				<tr>
