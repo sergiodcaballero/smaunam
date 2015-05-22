@@ -110,11 +110,11 @@ border-collapse: collapse;
   </tr>
   <tr>
     <td colspan="3" >Fecha Preinscripci&oacute;n</td>
-    <td colspan="3">N&uacute;mero de Beneficiario</td>
+    <td colspan="3"><center>N&uacute;mero de Beneficiario</center></td>
     <td width="29">Categ</td>
     <td width="27">Edad</td>
     <td colspan="2"><center>Sexo</center></td>
-    <td colspan="4" rowspan="4">TROQUEL 1</td>
+    <td colspan="4" rowspan="4"><center>TROQUEL 1</center></td>
   </tr>
   <tr>
     <td width="31">&nbsp;</td>
@@ -142,7 +142,7 @@ border-collapse: collapse;
     <td rowspan="2">&nbsp;</td>
     <td rowspan="2">&nbsp;</td>
     <td rowspan="2">&nbsp;</td>
-    <td colspan="4" rowspan="2">TROQUEL 2</td>
+    <td colspan="4" rowspan="2"><center>TROQUEL 2</center></td>
   </tr>
   <tr>
     <td height="29" colspan="6">R/P:<br />
@@ -154,57 +154,57 @@ border-collapse: collapse;
     <td rowspan="2">&nbsp;</td>
     <td rowspan="2">&nbsp;</td>
     <td rowspan="2">&nbsp;</td>
-    <td colspan="4" rowspan="3">TROQUEL 3</td>
+    <td colspan="4" rowspan="3"><center>TROQUEL 3</center></td>
   </tr>
   <tr>
     <td height="26" colspan="6">R/P:<br /></td>
   </tr>
   <tr>
-    <td height="16" colspan="3">Codigo</td>
-    <td colspan="7">Diagn&oacute;stico Principal <br /></td>
+    <td height="16" colspan="3">Codigo:</td>
+    <td colspan="7">Diagn&oacute;stico Principal: <br /></td>
   </tr>
   <tr>
-    <td height="16" colspan="3">Codigo</td>
-    <td colspan="7">Diagn&oacute;stico Secundario <br /></td>
-    <td colspan="4" rowspan="2">TROQUEL 4</td>
+    <td height="16" colspan="3">Codigo:</td>
+    <td colspan="7">Diagn&oacute;stico Secundario: <br /></td>
+    <td colspan="4" rowspan="2"><center>TROQUEL 4</center></td>
   </tr>
   <tr>
     <td colspan="3"><strong>Emitido 
       <?php echo $Fecha_imp;?> <br  />
       V&aacute;lido hasta <?php echo $Fecha_Hasta; ?><br  />
       Recetario N&ordm; 22 - <?php echo $Ultimo_numero;?></strong></td>
-    <td height="60" colspan="3">Firma y Sello del Profesional</td>
-    <td height="60" colspan="4">Matricula</td>
+    <td height="60" colspan="3">Firma y Sello del Profesional:</td>
+    <td height="60" colspan="4">Matricula:</td>
   </tr>
-  <tr>
-    <td colspan="5">DATOS DEL AFILIADO</td>
-    <td colspan="9">EXCLUSIVO USO FARMACIA</td>
+  <tr style='border: 2px solid #000;'>
+    <td colspan="5" style='border-left: 2px solid #000;'><center>DATOS DEL AFILIADO</center></td>
+    <td colspan="9" style='border-left: 2px solid #000;border-right: 2px solid #000;'><center>EXCLUSIVO USO FARMACIA</center></td>
   </tr>
-  <tr>
-    <td height="35" colspan="3" >&nbsp;</td>
+  <tr >
+    <td height="35" colspan="3" style='border-left:2px solid #000'>&nbsp;</td>
     <td colspan="2">&nbsp;</td>
-    <td>&nbsp;</td>
+    <td style='border-left:2px solid #000'>&nbsp;</td>
     <td height="35" colspan="2">Fecha vta</td>
     <td height="35">&nbsp;</td>
     <td height="35">&nbsp;</td>
-    <td height="35" colspan="3">&nbsp;</td>
+    <td height="35" colspan="3" style='border-right:2px solid #000'>&nbsp;</td>
   </tr>
-  <tr>
-    <td colspan="3">Firma</td>
-    <td colspan="2">Aclaraci&oacute;n</td>
-    <td>A/C Afiliado</td>
-    <td colspan="8" rowspan="2">&nbsp;</td>
+  <tr >
+    <td colspan="3" style='border-left:2px solid #000'><center>Firma</center></td>
+    <td colspan="2" style="border-right:2px solid #000"><center>Aclaraci&oacute;n</center></td>
+    <td><center>A/C Afiliado</center></td>
+    <td colspan="8" rowspan="2" style="border-right:2px solid #000">&nbsp;</td>
   </tr>
-  <tr>
-    <td height="34" colspan="3">&nbsp;</td>
-    <td colspan="2">&nbsp;</td>
+  <tr >
+    <td height="34" colspan="3" style='border-left:2px solid #000'>&nbsp;</td>
+    <td colspan="2" style="border-right:2px solid #000">&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
-  <tr>
-    <td colspan="3">DNI</td>
-    <td colspan="2">Telefono</td>
-    <td>A/C SMAUNAM</td>
-    <td colspan="8">Sello y Firma</td>
+  <tr style='border-bottom: 2px solid #000;'>
+    <td colspan="3" style='border-left:2px solid #000'><center>DNI</center></td>
+    <td colspan="2" style="border-right:2px solid #000"><center>Telefono</center></td>
+    <td style='border-left:2px solid #000'><center>A/C SMAUNAM</center></td>
+    <td colspan="8" style="border-right:2px solid #000"><center>Sello y Firma</center></td>
   </tr>
 </table>
 
