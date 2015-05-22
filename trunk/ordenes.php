@@ -66,6 +66,17 @@ while ($fila = mysql_fetch_array($resultado)){
 <head><meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type" content="text/html;  charset=iso-8859-1" />
 <title>Documento sin t&iacute;tulo</title>
+<script type="text/javascript">
+	// var NAV = navigator.appName;
+	// alert(NAV);
+	// alert(navigator.appCodeName);
+	 //alert(navigator.userAgent);
+ // if (NAV=="Microsoft Internet Explorer") {
+//    alert('... está usando Internet Explorer y hacemos algo ...');
+//  } else {
+//    alert('... está usando cualquier otro navegador ...');
+//  }
+</script>
 <style type="text/css">
 	table{
 		
@@ -149,14 +160,15 @@ body{
     <td><?php echo $Coseguro;?></td>
   </tr>
   <tr border="0">
-    <td colspan="6">Diagnostico</td>
+    <td colspan="6">Diagnostico:</td>
   </tr>
   <tr border="0">
     <td height="95" colspan="6">
     <div style="float:left;">
-   <!--[if IE]>
-   	<?php include('../autogestion/qrcode/qrlib.php');
-	 // text output   
+   <!--[if (IE )]>
+   	<?php // print_r('menor o igual a 8');
+	include('../autogestion/qrcode/qrlib.php');
+	 // text output   ie8 o inferior
 $codeContents = $numero_orden.' 22'; 
 	 // generating 
 	$text = QRcode::text($codeContents); 
@@ -167,8 +179,11 @@ $codeContents = $numero_orden.' 22';
 	)); echo '<tt style="font-size:3px">'.$raw.'</tt>'; 
 		?>
    <![endif]-->
+   
 <!--[if !IE]><!-->
-		<?php echo '<img  src="qr.php" />';
+		<?php 
+		
+		echo '<img  src="qr.php" />';
 	
  //<![endif]-->?>
     <!-- <![endif]-->
