@@ -109,7 +109,7 @@ border-collapse: collapse;
     </td>
   </tr>
   <tr>
-    <td colspan="3" >Fecha Preinscripci&oacute;n</td>
+    <td colspan="3" >Fecha Prescripci&oacute;n</td>
     <td colspan="3"><center>N&uacute;mero de Beneficiario</center></td>
     <td width="29">Categ</td>
     <td width="27">Edad</td>
