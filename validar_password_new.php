@@ -26,7 +26,7 @@
 	$blanco = strlen($Pass_new) * strlen($Pass_rep);
 	if ($blanco > 0 ) {
 		if ($Pass_new === $Pass_rep)  {
-			$cambio = "update ppadron set  pass = ".$Pass_new.", nuevo = 'NO' where Afili =".$Nro_Doc;
+			$cambio = "update ppadron set  pass = '".$Pass_new."', nuevo = 'NO' where Afili =".$Nro_Doc;
 			$cargo = mysql_query($cambio, $honorarios) or die(mysql_error());
 			$auditoria = "insert into auditoria (N_Afiliado, accion, fecha) values ('".$N_Afiliado."','ALTA PASSWORD','".$fecha."')";
 			
