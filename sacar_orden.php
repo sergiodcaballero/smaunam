@@ -92,18 +92,18 @@ ob_start();
 		
 		
 		  
-$_POST['id_orden'] = $Ultimo_numero;
+//$_POST['id_orden'] = $Ultimo_numero;
  //$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$Ultimo_numero;
 		 
 //include_once('ordenes.php');
-include_once('ordenes.php');
+//include_once('ordenes.php');
 ?>
 <br/>
 <div class="lineas"></div><br />
 <?php //<div class='saltopagina'></div>
 //include_once('recetario.php');
-$_POST['id_orden'] = $Ultimo_numero;
-include_once('recetario.php');
+//$_POST['id_orden'] = $Ultimo_numero;
+//include_once('recetario.php');
 ?>
 </body>
 </html>

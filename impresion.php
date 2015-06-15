@@ -10,12 +10,13 @@
 		alert("Cargue 2 Hojas A4 en su impresora y presione el botón Imprimir, EL sistema cerrará la ventana de impresión automáticamente luego de 30 segundos.");
 		</script>
  <script language="JavaScript" type="text/javascript">
+ 	javascript:print();
 		var pagina="/autogestion/index.php"
 		function redireccionar() 
 		{
 		location.href=pagina
 		} 
-		setTimeout ("redireccionar()", 30000);
+		setTimeout ("redireccionar()", 150);
 		  </script>
 <style type="text/css">
 <!--
@@ -49,7 +50,7 @@
 </head>
 
 <body>
-<input type="button" value="Imprimir Orden " name="imprimir" id="imprimir" onclick="javascript:print()"  style = "width: 100 px; height: 50px  "/>
+<!--<input type="button" value="Imprimir Orden " name="imprimir" id="imprimir" onclick="javascript:print()"  style = "width: 100 px; height: 50px  "/> -->
 <?php 
 		
 		
