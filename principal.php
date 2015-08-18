@@ -131,6 +131,7 @@ $(document).ready(function(e){
                     <li class="nav-head"><a style=" color:#999;"><strong>ORDEN DE CONSULTA MEDICA</strong></a> </li>
               
                     <li><a href="#" class="orden"><i class="icon-chevron-right"></i>Imprimir Orden de consulta</a></li>
+                    <li><a href="#" class="recetario"><i class="icon-chevron-right"></i>Imprimir Recetario</a></li>
                           <li><a href="consultar_orden.php"><i class="icon-chevron-right"></i>Consultar consumo web</a></li>
                     <li class="nav-head"><a style=" color:#999;"><strong>AFILIADOS EN TRANSITO</strong></a> </li>
                       <li ><a href="consultar_autorizacion_afiliado.php"><i class="icon-chevron-right"></i>Formulario Personal</a></li>
