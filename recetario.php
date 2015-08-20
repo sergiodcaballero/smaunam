@@ -1,17 +1,20 @@
 <?php 
  require_once('connections/honorarios.php'); 
+ //echo "<br/>";
+ //print_r($_POST);
 $numero_orden = $_POST['id_orden'];
+//print_r($numero_orden);
 		//include('../autogestion/qrcode/qrimage.php');
 		
 	 // text output   
 
 
-	$sql= "SELECT f.n_orden,f.afiliado,f.n_benef, p.nombre, DATE_FORMAT(f.fecha_emis,'%d-%m-%Y') as fecha, DATE_FORMAT(f.fecha_val,'%d-%m-%Y') as fecha_hasta FROM farmacia f inner join ppadron p on p.N_afiliado=f.N_afiliado where f.n_orden=$numero_orden";
+	$sql= "SELECT f.n_receta,f.afiliado,f.n_benef, p.nombre, DATE_FORMAT(f.fecha_emis,'%d-%m-%Y') as fecha, DATE_FORMAT(f.fecha_val,'%d-%m-%Y') as fecha_hasta FROM farmacia f inner join ppadron p on p.N_afiliado=f.N_afiliado where f.n_receta=$numero_orden";
 	$resultado = mysql_query($sql, $honorarios) or die(mysql_error());
-while ($fila = mysql_fetch_array($resultado)){ 
+while ($fila = mysql_fetch_array($resultado)){
 	$num_afiliado = $fila['afiliado'];
 	$Fecha_imp = $fila['fecha'];
-	$Ultimo_numero = $fila['n_orden'];
+	$Ultimo_numero = $fila['n_receta'];
 	$categ = $fila['n_benef'];
 	$Nombre = $fila['nombre'];
 	
@@ -72,7 +75,7 @@ border-collapse: collapse;
     <td width="263" rowspan="2" ><p align="center" style="font-size:15px"><strong>Recetario de Farmacia</strong></p>
     <p align="center" style="font-size:15px">AUTO GESTI&Oacute;N S.M.A.U.Na.M</p></td>
     <td width="122"><strong>Recetario Nº22-<?php echo $Ultimo_numero;?> </strong></td>
-    <td width="55" rowspan="2" >
+    <td width="55" rowspan="2" > 
 		<!--[if IE]>
 			<?php 
              // text output   
@@ -87,7 +90,9 @@ border-collapse: collapse;
                 ?>
            <![endif]-->
             <!--[if !IE]><!-->
-            <?php echo '<img  src="qr.php" />';
+            <?php 
+			
+			echo '<img  src="qr.php" />';
         
 		 //<![endif]-->?>
 			<!-- <![endif]-->

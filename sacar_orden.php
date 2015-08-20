@@ -67,14 +67,14 @@ ob_start();
 		   /// Cargo Detalle 
 		  $Carga_Detalle = "insert into detalle_orden_medica set orden_nro = '".$Ultimo_numero."', regio = 22, afiliado = '".$N_Afiliado."', codigo = '".$Codigo."', cant = 1, fecha = '".$Fecha."', monto = '".$Monto."' , coseguro = '".$Coseguro."'";   
 		  $Resultado_Detalle=mysql_query($Carga_Detalle);
-		  
+		   $_SESSION['mi_id_orden'] = $Ultimo_numero;
 		  /// Cargo Recetario de Farmacia 
-		  $Carga_Recetario = "insert into farmacia set n_receta = '".$Ultimo_numero."', regio = 22, n_orden = '".$Ultimo_numero."', N_AFILIADO = '".$N_Afiliado."', afiliado = '".$Afiliado_Solo."',n_benef='".$benef."', plan = '".$Plan."', fecha_emis = '".$Fecha."', fecha_val ='".$suma_fecha."', hora_emis = '".$Hora."', operador_emis = 'AutoGestion', APELLIDO_Y_NOMBRE='$Nombre'"; 
+		  $Carga_Recetario = "insert into farmacia set  regio = 22, n_orden = '".$Ultimo_numero."', N_AFILIADO = '".$N_Afiliado."', afiliado = '".$Afiliado_Solo."',n_benef='".$benef."', plan = '".$Plan."', fecha_emis = '".$Fecha."', fecha_val ='".$suma_fecha."', hora_emis = '".$Hora."', operador_emis = 'AutoGestion', APELLIDO_Y_NOMBRE='$Nombre'"; 
 		  $Resultado_Farmacia=mysql_query($Carga_Recetario);
-		  
+		  $Ultimo_numero  =  mysql_insert_id();
 		  mysql_close();
 		 // $_POST['id_orden'] = $Ultimo_numero;
- $_SESSION['mi_id_orden'] = $Ultimo_numero;
+$_SESSION['mi_recetario'] = $Ultimo_numero;
  header('Location:impresion.php');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

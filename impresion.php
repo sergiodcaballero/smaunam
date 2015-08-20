@@ -65,7 +65,8 @@ include_once('ordenes.php');
 <div class="lineas"></div><br />
 <?php //<div class='saltopagina'></div>
 //include_once('recetario.php');
-$_POST['id_orden'] = $_SESSION['mi_id_orden'];;
+ $_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_SESSION['mi_recetario'];
+$_POST['id_orden'] = $_SESSION['mi_recetario'];
 include_once('recetario.php');
 ?>
 </body>
