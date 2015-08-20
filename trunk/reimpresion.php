@@ -66,12 +66,26 @@ include_once('ordenes.php');
 <div class="lineas"></div><br />
  <?php //<div class='saltopagina'></div>
 //include_once('recetario.php');
+
+
 if (isset($_GET['id_orden'])){
-	$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_GET['id_orden'];
-	$_POST['id_orden'] = $_GET['id_orden'];
-	}else{
-	$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_POST['id_orden'];
-	}
+	$consultar_recetario = "select n_receta from farmacia where n_orden='".$_GET['id_orden']."'";
+}else{
+	$consultar_recetario = "select n_receta from farmacia where n_orden='".$_POST['id_orden']."'";
+}
+
+require_once('connections/honorarios.php'); 
+mysql_select_db($database_honorarios, $honorarios);
+  
+ $resultado = mysql_query($consultar_recetario) or die(mysql_error());
+ while ($fila = mysql_fetch_array($resultado)){
+				 $recetario = $fila['n_receta']; 
+				                                              
+		}
+ mysql_close();
+	$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$recetario;
+	$_POST['id_orden'] = $recetario;
+	
 include_once('recetario.php');
 ?>
 

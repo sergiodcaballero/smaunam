@@ -71,7 +71,7 @@ require_once('connections/honorarios.php');
 
 $(document).ready(function(e){
 	$(".orden").click(function(evento){
-		if (confirm("¿Esta seguro de imprimir la orden? "))
+		if (confirm("¿Esta seguro de imprimir la Orden? "))
 			{
 				//alert('hola');
 				location.href = "/autogestion/control_cant_ordenes.php";
@@ -80,7 +80,16 @@ $(document).ready(function(e){
 				return false;
 			}
 	});
-	
+	$(".recetario").click(function(evento){
+		if (confirm("¿Esta seguro de imprimir el Recetario? "))
+			{
+				//alert('hola');
+				location.href = "/autogestion/control_cant_recetario.php";
+			 	//return true;
+			}else{
+				return false;
+			}
+	});
 });
 	
 	
@@ -130,7 +139,7 @@ $(document).ready(function(e){
                           <li><a href="cerrar_sesion.php"><i class="icon-remove "></i> Salir</a></li>
                     <li class="nav-head"><a style=" color:#999;"><strong>ORDEN DE CONSULTA MEDICA</strong></a> </li>
               
-                    <li><a href="#" class="orden"><i class="icon-chevron-right"></i>Imprimir Orden de consulta</a></li>
+                    <li><a href="#" class="orden"><i class="icon-chevron-right"></i>Imprimir Orden y Recetario</a></li>
                     <li><a href="#" class="recetario"><i class="icon-chevron-right"></i>Imprimir Recetario</a></li>
                           <li><a href="consultar_orden.php"><i class="icon-chevron-right"></i>Consultar consumo web</a></li>
                     <li class="nav-head"><a style=" color:#999;"><strong>AFILIADOS EN TRANSITO</strong></a> </li>
