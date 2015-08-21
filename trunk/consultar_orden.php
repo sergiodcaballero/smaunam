@@ -155,11 +155,11 @@ var pagina="/autogestion/index.php"
 <div class="accordion " id="accordion2" >
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-       <h4> Consumo de Ordenes de Consulta con Recetarios por Auto Gestión</h4>
+      <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+       <h4 class="brand"> Consumo de Ordenes de Consulta con Recetarios por Auto Gestión</h4>
       </a>
     </div>
-    <div id="collapseOne" class="accordion-body collapse in">
+    <div id="collapseOne" class="accordion-body collapse ">
       <div class="accordion-inner">
         		<div class="contenido_base1 scrollspy-example tabla_afiliado" data-spy="scroll" data-target="#navbarExample">
        		
