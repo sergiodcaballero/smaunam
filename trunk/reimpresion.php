@@ -53,14 +53,14 @@
 //print_r($_POST);
 //include_once('ordenes.php');
 //include('qr.php');
-if (isset($_GET['id_orden'])){
-	$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_GET['id_orden'];
-	$_POST['id_orden'] = $_GET['id_orden'];
+if (isset($_POST['id_orden']) or isset($_GET['id_orden'])){
+	if (isset($_GET['id_orden'])){
+		$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_GET['id_orden'];
+		$_POST['id_orden'] = $_GET['id_orden'];
 	}else{
-	$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_POST['id_orden'];
+		$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_POST['id_orden'];
 	}
-
-include_once('ordenes.php');
+	include_once('ordenes.php');
 ?>
 <br/>
 <div class="lineas"></div><br />
@@ -86,8 +86,21 @@ mysql_select_db($database_honorarios, $honorarios);
 	$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$recetario;
 	$_POST['id_orden'] = $recetario;
 	
-include_once('recetario.php');
-?>
 
+include_once('recetario.php');
+
+}else{
+	include_once ('qrcode/phpqrcode.php');
+	if (isset($_GET['id_recetario'])){
+		$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_GET['id_recetario'];
+		$_POST['id_orden'] = $_GET['id_recetario'];
+	}else{
+		$_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_POST['id_recetario'];
+		$_POST['id_orden'] = $_POST['id_recetario'];
+	}
+	
+	include_once('recetario.php');
+}
+?>
 </body>
 </html>
