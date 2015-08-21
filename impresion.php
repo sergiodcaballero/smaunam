@@ -7,7 +7,7 @@
 <link href="impresion.css" rel="stylesheet" type="text/css" media="print"/>
 <title>Documento sin título</title>
 <script language="JavaScript">
-		alert("Cargue 2 Hojas A4 en su impresora y presione el botón Imprimir, EL sistema cerrará la ventana de impresión automáticamente luego de 30 segundos.");
+		alert("Cargue con Hojas A4 en su impresora y presione el botón Imprimir, EL sistema cerrará la ventana de impresión automáticamente luego de 30 segundos.");
 		</script>
  <script language="JavaScript" type="text/javascript">
 		var pagina="/autogestion/index.php"
