@@ -46,16 +46,20 @@
 	border-bottom-style: dashed; border-bottom-width: 4px; 
 	}
 </style>
+
 </head>
 
 <body>
+
 <input type="button" value="Imprimir Orden " name="imprimir" id="imprimir" onclick="javascript:print()"  style = "width: 100 px; height: 50px  "/>
+<input type="button" value="Volver atr&aacute;s " name="volver" id="volver_atras" onclick="history.back()"  style = "width: 100 px; height: 50px  "/>
+ 
 <?php 
 		
 		
 		  
 $_POST['id_orden'] = $_SESSION['mi_id_orden'];
- $_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_SESSION['mi_id_orden'];;
+ $_SESSION['id_orden'] = $_SESSION['N_Afiliado']."__".$_SESSION['mi_id_orden'];
 		 
 //include_once('ordenes.php');
 include_once('ordenes.php');

@@ -31,7 +31,8 @@ $Nombre     = $_SESSION['Nombre'];
 </head>
 
 <body>
-<input type="button" value="Imprimir Orden" name="imprimir" id="imprimir" onclick="javascript:print()"  style = "width: 100 px; height: 50px  "/>
+<input type="button" value="Imprimir Recetario" name="imprimir" id="imprimir" onclick="javascript:print()"  style = "width: 100 px; height: 50px  "/>
+<input type="button" value="Volver atr&aacute;s " name="volver" id="volver_atras" onclick="history.back()"  style = "width: 100 px; height: 50px  "/>
 <?php 
 include_once ('qrcode/phpqrcode.php');
 //print_r($_SESSION['mi_id_orden']);

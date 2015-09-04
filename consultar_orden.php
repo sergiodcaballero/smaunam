@@ -4,12 +4,6 @@ session_start();
 if (!(isset($_SESSION['n_benef']))){
 		header('Location:index.php');
 	}
-	//else if (isset($_POST['id_orden'])){
-	//	header('Location:consultar_orden.php');
-		//echo "existeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
-	
-	//	}
-	
 	require_once('connections/honorarios.php'); 
  ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -37,17 +31,13 @@ var pagina="/autogestion/index.php"
 		{
 		location.reload();
 		} 
-		setTimeout ("redireccionar()", 500000);
-	
-	$(document).ready(function(e){
-		
+		setTimeout ("redireccionar()", 500000);	
+	$(document).ready(function(e){		
 	$("#form_reimprimir").submit( function (E){  
-	//alert('holaa'); 
    		var prueba = $(".reimprimir").val();
      // return false; //Si devolvemos false, el formulario ya no se enviará.
   	 });
-				
-		$(".reimprimir").click(function(evento){
+			$(".reimprimir").click(function(evento){
 				//var aux= no;
 				 var num_orden = $(this).attr('id');//alert (num_orden);
 				 bootbox.dialog({
@@ -77,11 +67,10 @@ var pagina="/autogestion/index.php"
                 }
             }
         );
-			//if (aux=='si'){alert('hola');}
+			
 			});	
 			
 		$(".reimprimir_recetario").click(function(evento){
-				//var aux= no;
 				 var num_orden = $(this).attr('id');//alert (num_orden);
 				 bootbox.dialog({
                 title: "Términos y condiciones Sistema de Autogestión SMAUNaM "+'<h6>  ORDENES DE CONSULTAS MÉDICAS WEB' +
@@ -99,43 +88,51 @@ var pagina="/autogestion/index.php"
 							var accion = "reimpresion del Recetario N "+ num_orden;
 						$.post('agregar_auditoria.php',{accion:accion}
 							);
-							//alert(num_orden);
 							$('input[name="id_recetario"]').val(num_orden);
-							//alert($('input[name="id_orden"]').val());
-// window.open("reimpresion.php?v1=4&v2=3", "popupId", "location=no,menubar=no,titlebar=no,resizable=no,toolbar=no, menubar=no,width=500,height=500");
-								 //document.getElementById("id_orden").value(num_orden);
 							document.getElementById("form_reimprimir1").submit();
                         }
                     }
                 }
             }
         );
-			//if (aux=='si'){alert('hola');}
 			});	
 	});
-//-->
 </script>
 <style type="text/css">
 	.form-horizontal .control-label{
 		width:300px;}
-	
-	
-		.scrollspy-example {
-  
-  overflow: auto;
-  position: relative;
-}
+	.scrollspy-example {  
+	  overflow: auto;
+	  position: relative;
+	}
 .contenido_base1{
 	margin-top: 3%;
 	margin-left: 0%;
 	}
 </style>
+<style media="print" type="text/css">
+	@page {
+  size: auto;/* es el valor por defecto */
+  margin-left: -0.8cm;
+ margin-right: 0cm; /* margin: 10%;*/
+}
+</style>
+<style type="text/css">
+.btn1 {  display: inline;
+  margin-left: .3em;
+  zoom: 1;
+  white-space: nowrap;
+}
+</style>
+<script type="text/javascript">
+function imprSelec(muestra)
+{var ficha=document.getElementById(muestra);var ventimp=window.open(' ','popimpr');ventimp.document.write(ficha.innerHTML);ventimp.document.close();ventimp.print();ventimp.close();}
+</script>
 </head>
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css" />
 <body>
 <div class="container">
-	<div class="contenido">
-    
+	<div class="contenido">    
   <div class="row-fluid">
     <div class="span12">
 		<div class="encabezado">
@@ -151,21 +148,27 @@ var pagina="/autogestion/index.php"
         	</div>
         	  </div>
     </div>    <div class="stylo">
-    <div class="span11 " style="margin-top:5%;margin-left:3%">
+    
+    <div class="span11 " style="margin-top:1%;margin-left:3%">
+    
+     <form class="form-inline" style=" padding-top:3%;">             
+             	<div class="control-group">
+                <a class="btn" onclick="history.back()"><i class="icon-arrow-left"></i> Volver atr&aacute;s</a>
+                <input class="btn" type="button" value="Imprimir Consumo" name="Imprimir" onclick="javascript:print()" />
+                	
+                </div>
+              </form>
+             
 <div class="accordion " id="accordion2" >
   <div class="accordion-group">
-    <div class="accordion-heading">
-      <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-       <h4 class="brand"> Consumo de Ordenes de Consulta con Recetarios por Auto Gestión</h4>
-      </a>
+    <div class="accordion-heading well well-small" style="padding:0px; margin-bottom:0%;padding-bottom:1%">
+    <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" ><i class="icon-chevron-right"></i> <strong>Consumo de Ordenes de Consulta con Recetarios por Auto Gestión</strong></a>
     </div>
-    <div id="collapseOne" class="accordion-body collapse ">
+    <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner">
-        		<div class="contenido_base1 scrollspy-example tabla_afiliado" data-spy="scroll" data-target="#navbarExample">
-       		
-             <?php 
+        <span class="contenido_base1 scrollspy-example tabla_afiliado">
+        <?php 
 					 //Establecimiento de la conexi&oacute;n 
-					
 					$N_Afiliado = $_SESSION['N_Afiliado'];
 					//echo "Nro de Afiliado".$N_Afiliado;
 					// Controlo que No haya sacado más de 2 ordenes en el mes.- 
@@ -183,36 +186,38 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
 					$resultado = mysql_query($consulta);
 					$Cantidad_Filas = mysql_num_rows($resultado);
 					if ($Cantidad_Filas < 1){ 
-						echo "<br /> No se encontraron Cosumos para el Afiliado<br />\n";
+						echo "<br />No se encontraron Consumos de ordenes para el Afiliado<br />\n";
 					}else{
 				?>
-                <form id="form_reimprimir" target="_blank" name="form_reimprimir" action="reimpresion.php" method="get,post">
-            <table class="table table-striped table-bordered" style=" font-size: 11px;">
-             	 <thead>
-    				<tr>
-      					<th>Nº de Orden</th>
-      					<th>Nº de Afiliado</th>
-                        <th>Nombre</th>
-                        <th>Fecha de Emisión</th>
-                        <th>Hora</th>
-                        <th>Código</th>
-                        <th>Descripción</th>
-                        <th>Coseguro</th>
-                        <th></th>
-    				</tr>
-  				</thead>               
-  				<tbody>
-					<?php while ($fila = mysql_fetch_array($resultado)){ ?>
-   					<tr>
-      					<td><?php echo $fila['Numero'];?></td>
-      					<td><?php echo $fila['Documento'];?></td>
-                        <td><?php echo $fila['afiliado'];?></td>
-      					<td><?php echo $fila['Fecha_emision'];?></td>
-                        <td><?php echo $fila['hora'];?></td>
-      					<td><?php echo $fila['codigo'];?></td>
-                        <td><?php echo $fila['descripcion'];?></td>
-      					<td><?php echo $fila['coseguro'];?></td>
-                        <td><?php 
+        </span>
+        <div class="contenido_base1 scrollspy-example tabla_afiliado" data-spy="scroll" data-target="#navbarExample" style="margin-top:0%; margin-bottom:-2%">
+        		  <form id="form_reimprimir" target="_blank" name="form_reimprimir" action="reimpresion.php" method="get,post">
+        		    <table class="table table-striped table-bordered" style=" font-size: 11px;">
+        		      <thead>
+        		        <tr>
+        		          <th>Nº de Orden</th>
+        		          <th>Nº de Afiliado</th>
+        		          <th>Nombre</th>
+        		          <th>Fecha de Emisión</th>
+        		          <th>Hora</th>
+        		          <th>Código</th>
+        		          <th>Descripción</th>
+        		          <th>Coseguro</th>
+        		          <th></th>
+      		          </tr>
+      		        </thead>
+        		      <tbody>
+        		        <?php while ($fila = mysql_fetch_array($resultado)){ ?>
+        		        <tr>
+        		          <td><?php echo $fila['Numero'];?></td>
+        		          <td><?php echo $fila['Documento'];?></td>
+        		          <td><?php echo $fila['afiliado'];?></td>
+        		          <td><?php echo $fila['Fecha_emision'];?></td>
+        		          <td><?php echo $fila['hora'];?></td>
+        		          <td><?php echo $fila['codigo'];?></td>
+        		          <td><?php echo $fila['descripcion'];?></td>
+        		          <td><?php echo $fila['coseguro'];?></td>
+        		          <td><?php 
 						
 						$fecha_antigua = strtotime($fila['Fecha_emision'])- 86400;
 						
@@ -227,10 +232,12 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
 			 				$hora1 =  strtotime($hora);
 			 				$hora2 =  strtotime($fila['hora']);
 							if ($hora2<$hora1){?>
-                            	<input type='hidden' name="id_orden" value="<?php echo$fila['Numero'];?>"/>
-								<a class='btn reimprimir btn-success ' id="<?php echo$fila['Numero'];?>">Reimprimir</a><?php								
+        		            <input type='hidden' name="id_orden" value="<?php echo$fila['Numero'];?>"/>
+        		            <a class='btn reimprimir btn-success ' id="<?php echo$fila['Numero'];?>">Reimprimir</a>
+        		            <?php								
 								}else{ ?>
-								<a class='btn btn-success disabled'>Reimprimir</a><?php
+        		            <a class='btn btn-success disabled'>Reimprimir</a>
+        		            <?php
 							}
 						}else if ($fecha_actual==$fecha_nueva){
 							
@@ -238,33 +245,44 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
 			 				$hora1 =  strtotime($hora);
 			 				$hora2 =  strtotime($fila['hora']);
 							if ($hora2>$hora1){ ?>
-                            <input type='hidden' name="id_orden" value="<?php echo$fila['Numero'];?>"/>
-								<a class='btn reimprimir btn-success ' id="<?php echo$fila['Numero'];?>">Reimprimir</a><?php
+        		            <input type='hidden' name="id_orden" value="<?php echo$fila['Numero'];?>"/>
+        		            <a class='btn reimprimir btn-success ' id="<?php echo$fila['Numero'];?>">Reimprimir</a>
+        		            <?php
 							}else{ ?>
-								<a class='btn  btn-success disabled'>Reimprimir</a><?php
+        		            <a class='btn  btn-success disabled'>Reimprimir</a>
+        		            <?php
 							}
 						}else{?>
-							<a class='btn  btn-success disabled'>Reimprimir</a><?php
+        		            <a class='btn  btn-success disabled'>Reimprimir</a>
+        		            <?php
 						}					
 						?></td>
-    				</tr>
-                    <?php }?>
-  				</tbody>
-             </table>
-            
-             </form>
-             <?php } ?>
-            </div>
-      </div>
+      		          </tr>
+        		        <?php }?>
+      		        </tbody>
+      		      </table>
+    		    </form>
+        		  <?php } ?>
+        		  <center>
+        		 <!--   <input class="btn " type="button" value="Imprimir Consumo" name="Imprimir2" onclick="javascript:print()" /> -->
+      		    </center>
+        		<!--  <a href="javascript:imprSelec('muestra')">Imprimir Tabla</a> -->
+                </div>
+        		<div class="contenido_base1 scrollspy-example tabla_afiliado" data-spy="scroll" data-target="#navbarExample">
+       		
+
+    <div id="collapseOne" class="accordion-body collapse ">
+      <div class="accordion-inner"></div></div></div></div>
     </div>
   </div>
   <div class="accordion-group">
-    <div class="accordion-heading">
+    <div class="accordion-heading well well-small" style="padding:0px; margin-bottom:0%;padding-bottom:1%">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-       <h4> Consumo de Recetarios Adicionales por Auto Gestión  </h4>
+        <i class="icon-chevron-right "></i> <strong style="font-size:16px; margin-top:3%;padding_bottom:-2%;">Consumo de Recetarios de Farmacia Adicionales por Auto Gestión</strong>
+       
       </a>
     </div>
-    <div id="collapseTwo" class="accordion-body collapse">
+    <div id="collapseTwo" class="accordion-body collapse in">
       <div class="accordion-inner">
          <?php 
 					 //Establecimiento de la conexi&oacute;n 
@@ -282,7 +300,7 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
 					$resultado = mysql_query($consulta);
 					$Cantidad_Filas = mysql_num_rows($resultado);
 					if ($Cantidad_Filas < 1){ 
-						echo "<br /> No se encontraron Cosumos de recetarios especiales para el Afiliado<br />\n";
+						echo "<br /> No se encontraron Consumos de recetarios de Farmacia especiales para el Afiliado<br />\n";
 					}else{ ?>
 						<form id="form_reimprimir1" target="_blank" name="form_reimprimir1" action="reimpresion.php" method="get,post">
                         <table class="table table-striped table-bordered" style=" font-size: 11px;">
@@ -325,8 +343,7 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
                                             }else{ ?>
                                             <a class='btn btn-success disabled'>Reimprimir</a><?php
                                         }
-                                    }else if ($fecha_actual==$fecha_nueva){
-                                        
+                                    }else if ($fecha_actual==$fecha_nueva){                                 
                                         $hora =  date("H:i:s", time());
                                         $hora1 =  strtotime($hora);
                                         $hora2 =  strtotime($fila['hora_emis']);
@@ -334,8 +351,7 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
                                         <input type='hidden' name="id_recetario" value="<?php echo$fila['n_receta'];?>"/>
                                             <a class='btn reimprimir_recetario btn-success ' id="<?php echo$fila['n_receta'];?>">Reimprimir</a><?php
                                         }else{ ?>
-                                            <a class='btn  btn-success disabled'>Reimprimir</a><?php
-                                        }
+                                            <a class='btn  btn-success disabled'>Reimprimir</a><?php                                   }
                                     }else{?>
                                         <a class='btn  btn-success disabled'>Reimprimir</a><?php
                                     }					
@@ -343,40 +359,30 @@ AND ordenes_medicas.documento =".$N_Afiliado." AND ordenes_medicas.Fecha_emision
                                 </tr>
                                 <?php }?>
                             </tbody>
-                         </table>
-                        
+                         </table>                        
                          </form>
 					<?php }
-				?>
+				?> <center>
+					<!--<input class="btn" type="button" value="Imprimir Consumo" name="Imprimir" onclick="javascript:print()" /> -->
+               </center>
       </div>
     </div></div>
-    <center>
-     <form class="form-inline" style=" margin-top:3%;">             
-             	<div class="control-group">
-                	<input class="btn btn-info" type="button" value="Imprimir Consulta" name="Imprimir2" onClick="javascript:print()" />
-                    <input class="btn"type="button" value="Volver atr&aacute;s" name="volver atr&aacute;s222" onClick="history.back()" />
-                </div>
-              </form>
-              </center>
+   
   </div>
 </div>
-    </div>
-    <div class="span12" >
-        <div class="contenido_base" >
-        <div class="alert alert-info" style="margin-right:5%;margin-top:-3%; margin-left:-10%;padding-top:1%; text-align:justify;">
-        	<strong>Términos y condiciones Sistema de Autogestión SMAUNaM <br/>
+   
+    <div class="span12" >        
+        <div class="span12" >
+        <div class="contenido_base" style="margin-top:-1%;">
+        <div class="alert alert-info" style="margin-right:5%;margin-top:2%; margin-left:-10%;padding-top:1%; text-align:justify;"><strong>Términos y condiciones Sistema de Autogestión SMAUNaM <br/>
 ORDENES DE CONSULTAS MÉDICAS WEB</strong><br/>
             -Las órdenes emitidas por el sistema web serán impresas por el afiliado sin que las mismas puedan ser duplicadas y/o fotocopiadas o alteradas.<br/>
 -En el caso que el SMAUNaM detecte el cometido de alguna de estas situaciones o que no correspondan al buen uso del beneficio, descontará el 100% del valor de la orden médica de los haberes del titular; para lo cual el afiliado titular presta entera conformidad. Para el caso de una reiteración de los hechos se suspenderá para el afiliado titular y su grupo familiar el beneficio del uso del sistema de autogestión web.
-                       
-        
         </div>
         </div>
     </div>
   </div>
 </div>
 </div>
-
-
 </body>
 </html>

@@ -151,7 +151,11 @@ function MM_validateForm() { //v4.0
           	<button type="submit" class="btn btn-success" onclick="MM_validateForm('N_Afiliado','','RisNum','Nro_Doc','','RisNum');return document.MM_returnValue">Ingresar</button>
             <a class="btn" href="http://www.smaunam.com.ar" style="margin-left:2%;">Volver</a> 
             <a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal"  style="margin-left:2%;">Recuperar Contraseña</a> 
-          </center>
+            </center>
+            <br/>
+            <center>
+             <a target="_blank" href="http://www.smaunam.com.ar/wp-content/uploads/2015/04/ingreso_sistema.pdf" class="btn btn-default">Ayuda Ingreso a Sistema</a>
+             </center>
           </div>
         </form>
         <div class="alert alert-info" style="margin-right:20%;margin-top:2%; margin-left:-10%;padding-top:1%">

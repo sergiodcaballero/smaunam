@@ -81,7 +81,7 @@ $(document).ready(function(e){
 			}
 	});
 	$(".recetario").click(function(evento){
-		if (confirm("¿Esta seguro de imprimir el Recetario? "))
+		if (confirm("¿Esta seguro de imprimir un Recetario de Farmacia? "))
 			{
 				//alert('hola');
 				location.href = "/autogestion/control_cant_recetario.php";
@@ -140,7 +140,7 @@ $(document).ready(function(e){
                     <li class="nav-head"><a style=" color:#999;"><strong>ORDEN DE CONSULTA MEDICA</strong></a> </li>
               
                     <li><a href="#" class="orden"><i class="icon-chevron-right"></i>Imprimir Orden y Recetario</a></li>
-                    <li><a href="#" class="recetario"><i class="icon-chevron-right"></i>Imprimir Recetario</a></li>
+                    <li><a href="#" class="recetario"><i class="icon-chevron-right"></i><i class="icon-star-empty"></i>Imprimir Recetario de Farmacia</a></li>
                           <li><a href="consultar_orden.php"><i class="icon-chevron-right"></i>Consultar consumo web</a></li>
                     <li class="nav-head"><a style=" color:#999;"><strong>AFILIADOS EN TRANSITO</strong></a> </li>
                       <li ><a href="consultar_autorizacion_afiliado.php"><i class="icon-chevron-right"></i>Formulario Personal</a></li>
@@ -249,8 +249,7 @@ $(document).ready(function(e){
     <div class="span12">
              <div class="alert alert-info" style="text-align:justify;margin-right:10%;margin-top:2%; padding-top:1%;padding-left:-10px;margin-left:1%;">
         	<strong>*Señor Afiliado:</strong><br/>
-            - Ante cualquier duda o consulta sobre el funcionamiento del sistema por favor enviar un email a <strong>autogestion@smaunam.com.ar </strong>
-           
+            - Ante cualquier duda o consulta sobre el funcionamiento del sistema por favor enviar un email a <strong>autogestion@smaunam.com.ar </strong>           
         </div>    	
     </div>
   </div>
